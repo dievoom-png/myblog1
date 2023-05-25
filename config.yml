@@ -1,5 +1,6 @@
 baseurl: /
 title: Blog.Yahya
+ignoreErrors: "error-remote-getjson"
 theme: github.com/adityatelange/hugo-PaperMod
 params:
   ShowBreadCrumbs: true
