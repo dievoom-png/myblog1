@@ -75,4 +75,7 @@ menu:
    # name: Archives
     #url: /archives/
     #weight: 30
+module:
+  imports:
+    - path: 'https://github.com/mfg92/hugo-shortcode-gallery'
 
