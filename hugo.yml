@@ -2,6 +2,10 @@ baseurl: /
 title: Blog.Yahya
 theme: github.com/adityatelange/hugo-PaperMod
   #- github.com/adityatelange/hugo-PaperMod/dependencies
+build:
+  processing:
+    skip_processing: true
+
 ignoreErrors: "error-remote-getjson"
 #theme: "PaperMod"
 params:
@@ -75,7 +79,3 @@ menu:
    # name: Archives
     #url: /archives/
     #weight: 30
-module:
-  imports:
-    - path: 'https://github.com/mfg92/hugo-shortcode-gallery'
-
