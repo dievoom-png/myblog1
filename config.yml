@@ -1,7 +1,7 @@
 baseurl: /
 title: Blog.Yahya
 ignoreErrors: "error-remote-getjson"
-theme: "PaperMod"
+#theme: "PaperMod"
 params:
   ShowBreadCrumbs: true
   ShowToc: true
@@ -74,4 +74,7 @@ menu:
     #url: /archives/
     #weight: 30
 
-
+module:
+  module:
+    imports:
+    path: "github.com/adityatelange/hugo-PaperMod"
