@@ -1,6 +1,6 @@
 baseurl: /
 title: Blog.Yahya
-theme: PaperMod
+theme: github.com/adityatelange/hugo-PaperMod
 params:
   ShowBreadCrumbs: true
   ShowToc: true
