@@ -1,0 +1,76 @@
+baseurl: /
+title: Blog.Yahya
+theme: PaperMod
+params:
+  ShowBreadCrumbs: true
+  ShowToc: true
+  ShowCodeCopyButtons: true
+  ShowReadingTime: true
+  #email: yahya.ayman9@gmail.com
+  opengraph: true
+  #shareTwitter: true
+  dateFormat: 'Mon, Jan 2, 2006'
+  Author: Yahya
+    # home-info mode
+
+  homeInfoParams:
+    Title: "\U0001F44B \U0001F47E \U0001F4BB"
+    Content: Journaling whatever i learn
+  socialIcons: # optional
+        - name: Github
+          url: "https://github.com/dievoom-png"
+        - name: Linkedin
+          url: "https://www.linkedin.com/in/yahya-ayman-8a27961b4/"
+  
+  assets:
+    favicon: "favicons/katto.ico"
+    favicon: "https://blog.yahyaayman.com/katto.ico"
+    favicon: "https://yahyaayman.com/katto.ico"
+
+profileMode:
+        enabled: false
+        title: "\U0001F44B \U0001F47E \U0001F4BB"
+        subtitle: "This is subtitle"
+        #imageUrl: "<image link>" # optional
+        #imageTitle: "<title of image as alt>" # optional
+        #imageWidth: 120 # custom size
+        #imageHeight: 120 # custom size
+      
+socialIcons: # optional
+        - name: Github
+          url: "https://github.com/dievoom-png"
+        - name: Linkedin
+          url: "https://www.linkedin.com/in/yahya-ayman-8a27961b4/"
+
+
+
+  
+Permalinks:
+  post: '/:filename/'
+  tags: /:title/
+  categories: /:title/
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # is necessary
+
+menu:
+  main:
+  - identifier: categories
+    name: Categories
+    url: /categories/
+    weight: 10
+
+  - identifier: tags
+    name: Tags
+    url: /tags/
+    weight: 20
+    
+  #- identifier: archives
+   # name: Archives
+    #url: /archives/
+    #weight: 30
+
+
