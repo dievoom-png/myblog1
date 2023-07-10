@@ -1,14 +1,17 @@
-
-
 ---
-Tags:
-- writeup challenge pmat yara
+title : "SillyPutty Challenge write up"
+categories:
+- Writeups
+tags:
+- Malware
+- Wireshark
+- Ctf
+- Cryptography
+- PE
 ---
 
-created: 2023-06-29 17:15
 
 
-# SillyPutty
 [Challenge Link](https://github.com/HuskyHacks/PMAT-labs/tree/main/labs/1-3.Challenge-SillyPutty)
 
 
@@ -18,10 +21,10 @@ created: 2023-06-29 17:15
 
 ## Q1 -What is the SHA256 Hash?
 Using hashmyfiles we can right click the malware sample and select on hashmyfiles
-![[SHA256 Hash.png]]
+![SHA256 Hash.png](SHA256 Hash)
 0c82e654c09c8fd9fdf4899718efa37670974c9eec5a8fc18a167f93cea6ee83
 ## Q2 -What architecture is this binary?
-When analyzing the [[File Header-COFF Header-Image File Header]] using PEbear or PEstudio it will tell us that the [[Binary Architecture]] is 32 bit ![[Binary Archtecture.png]]
+When analyzing the File Header-COFF Header-Image File Header using PEbear or PEstudio it will tell us that the Binary Architecture is 32 bit Binary Archtecture.png
 Note that we can also check the Magic in the Optional header that will tell us the architecture of the binary. 0x10b for 32 bits and 0x20b for 64 bit binaries.
 ## Q3 - Are there any results from submitting the SHA256 hash to VirusTotal?
 The results of running the SHA256 hash confirms that the binary is indeed malicious.
