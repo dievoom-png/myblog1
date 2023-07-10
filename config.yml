@@ -8,6 +8,8 @@ build:
 
 ignoreErrors: "error-remote-getjson"
 #theme: "PaperMod"
+
+
 params:
   ShowBreadCrumbs: true
   ShowToc: true
@@ -18,8 +20,8 @@ params:
   #shareTwitter: true
   dateFormat: 'Mon, Jan 2, 2006'
   Author: Yahya
+  
     # home-info mode
-
   homeInfoParams:
     Title: "\U0001F44B \U0001F47E \U0001F4BB"
     Content: Journaling whatever i learn
@@ -30,9 +32,7 @@ params:
           url: "https://www.linkedin.com/in/yahya-ayman-8a27961b4/"
   
   assets:
-    favicon: "favicons/katto.ico"
-    favicon: "https://blog.yahyaayman.com/katto.ico"
-    favicon: "https://yahyaayman.com/katto.ico"
+    favicon: "favicons/favicon.ico"
 
 profileMode:
         enabled: false
@@ -56,6 +56,7 @@ Permalinks:
   post: '/:filename/'
   tags: /:title/
   categories: /:title/
+  archvies: /archives/
 
 outputs:
   home:
@@ -75,7 +76,7 @@ menu:
     url: /tags/
     weight: 20
     
-  #- identifier: archives
-   # name: Archives
-    #url: /archives/
-    #weight: 30
+  - identifier: archives
+    name: Archives
+    url: /archives/
+    weight: 30
