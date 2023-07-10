@@ -1,5 +1,7 @@
 ---
 title : "SillyPutty Challenge write up"
+date: 11-7-2023
+draft = true
 categories:
 - Writeups
 tags:
