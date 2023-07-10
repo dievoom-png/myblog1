@@ -21,7 +21,7 @@ tags:
 
 ## Q1 -What is the SHA256 Hash?
 Using hashmyfiles we can right click the malware sample and select on hashmyfiles
-![SHA256%20Hash.png](SHA256 Hash)
+![SHA256%20Hash.png](SHA256Hash)
 
 0c82e654c09c8fd9fdf4899718efa37670974c9eec5a8fc18a167f93cea6ee83
 ## Q2 -What architecture is this binary?
