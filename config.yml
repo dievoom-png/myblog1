@@ -1,13 +1,12 @@
 baseurl: /
 title: Blog.Yahya
 theme: github.com/adityatelange/hugo-PaperMod
-  #- github.com/adityatelange/hugo-PaperMod/dependencies
+
 build:
   processing:
     skip_processing: true
 
 ignoreErrors: "error-remote-getjson"
-#theme: "PaperMod"
 
 
 params:
