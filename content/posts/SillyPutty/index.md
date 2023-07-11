@@ -1,15 +1,15 @@
 ---
-title : "SillyPutty Challenge write up"
-date: 11-7-2023
-draft:  flase
+title : "SillyPutty Challenge"
+date: 2023-07-11T12:08:34+03:00
+draft: false
 categories:
 - Writeups
 tags:
 - Malware
 - Wireshark
-- Ctf
 - Cryptography
 - PE
+- Shell
 ---
 Hello everyone! I've gotten great feedback about the TCM PMAT course, so I decided to enroll in it. I've had this course sitting in my purchased courses list for quite some time now, so I finally decided to get right into it and it's been awesome so far!
 

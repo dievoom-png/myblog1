@@ -1,5 +1,5 @@
 ---
-title : "Malware Traffic Analysis 3 Write up"
+title : "Malware Traffic Analysis 3"
 categories:
 - Writeups
 tags:
