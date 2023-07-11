@@ -11,7 +11,9 @@ tags:
 - Cryptography
 - PE
 ---
-Hey everyone! 
+Hello everyone! I've gotten great feedback about the TCM PMAT course, so I decided to enroll in it. I've had this course sitting in my purchased courses list for quite some time now, so I finally decided to get right into it and it's been awesome so far!
+
+In this write up I'm solving the first challenge in this course out of 3 and it was lots of fun so i hope you enjoy reading!
 
 
 [Challenge Link](https://github.com/HuskyHacks/PMAT-labs/tree/main/labs/1-3.Challenge-SillyPutty)
@@ -139,7 +141,7 @@ We got ourselves a shell!
 
 # Writing Yara Rules For IOCS
 
-This part is a little bonus that i wanted to do, at the end of the day we analyse malware in order to create signatures and better identify threats in the wild, So we can write a simple Yara rule to detect the payload string in the PE file.
+This part is a little bonus that i wanted to do, at the end of the day we analyses malware in order to create signatures and better identify threats in the wild, So we can write a simple Yara rule to detect the payload string in the PE file.
 
 
 ```yara
