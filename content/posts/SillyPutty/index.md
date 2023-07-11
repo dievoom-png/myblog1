@@ -15,9 +15,16 @@ Hello everyone! I've gotten great feedback about the TCM PMAT course, so I decid
 
 In this write up I'm solving the first challenge in this course out of 3 and it was lots of fun so i hope you enjoy reading!
 
-
 [Challenge Link](https://github.com/HuskyHacks/PMAT-labs/tree/main/labs/1-3.Challenge-SillyPutty)
 
+The challenge's prompt:
+Hello Analyst,
+
+The help desk has received a few calls from different IT admins regarding the attached program. They say that they've been using this program with no problems until recently. Now, it's crashing randomly and popping up blue windows when it's run. I don't like the sound of that. Do your thing!
+
+IR Team
+
+By just looking at the executable it's called putty.exe with the putty icon so im suspecting its a malware in disguises so lets get to analyzing it!
 
 # Questions
 
