@@ -68,7 +68,7 @@ Now we get to the fun part. we're going to reverse engineer the malware using ID
 When launching the binary in IDA we'll see that it already recognizes the main function that we can find in the functions list or when scrolling down in the start function
 ![mainfun.png](mainfun.png)
 
-Now let's delve into the main function of the program. The first thing that catches our eye is a peculiar URL being loaded and then passed into the [InternetOpenUrlA] function. As it's evident, this function attempts to connect to a URL. If it's successful, it obtains a valid handle to the URL. If the connection is not successfully established, it returns NULL. You can read more about the arguments passed to this function in the InternetOpenUrlA Documentation. I'll keep this post as concise as possible.
+Now let's delve into the main function of the program. The first thing that catches our eye is a peculiar URL being loaded and then passed into the [InternetOpenUrlA] function. As it's evident, this function attempts to connect to a URL. If it's successful, it obtains a valid handle to the URL. If the connection is not successfully established, it returns NULL. You can read more about the arguments passed to this function in the [InternetOpenUrlA Documentation](https://learn.microsoft.com/en-us/windows/win32/api/wininet/nf-wininet-internetopenurla). I'll keep this post as concise as possible.
 
 Next, we observe that the return value is stored in EAX, then moved to EDI. EDI is then logically ANDed with itself using test edi, edi. This operation changes the zero flag (ZF), which is checked by the JNZ (jump if not zero) instruction. This determines whether it jumps to the specified address or skips the jump entirely.
 
@@ -77,14 +77,15 @@ So, let's recap the flow of the code so far. We first attempt to connect to the 
 ![mainfunAnalysis.png](mainfunAnalysis.png)
 But what happens if we fail to connect to the URL, and we take the jump? Glad you asked.
 
-If we analyze the init_malware function, we'll find out. First, it gets the file path and name using the GetModuleFileNameA function, then checks the number of arguments passed. If it's more than 2, it will call a function that I've renamed to reflect its purpose (spoilers). So, let's examine that function first. However, we can conclude that the malware is probably launched more than once, as it exhibits different behaviors depending on how many arguments are supplied to it.
+If we analyze the init_malware function, we'll find out. First, it gets the file path and name using the [GetFileModuleA](https://learn.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getmodulefilenamea) function, then checks the number of arguments passed. If it's more than 2, it will call a function that I've renamed to reflect its purpose (spoilers). So, let's examine that function first. However, we can conclude that the malware is probably launched more than once, as it exhibits different behaviors depending on how many arguments are supplied to it.
 
 ![initMalwareFun.png](initMalwareFun.png)
 
 Inside the function, we see a simple call to two functions. Let's take a look at the first one.
 ![Simplefun.png](Simplefun.png)
 
-The first thing we notice is that it launches the executable with -m security arguments, and the %s placeholder is replaced with the file name and path. Then, it attempts to obtain a handle for the service manager with the highest privileges. If it succeeds, it creates a service named mssecsvc2.0 and starts the service. This is undoubtedly a malicious service masquerading as a normal service created by WannaCry. The service attempts to infect connected Windows machines on its local network using the ETERNALBLUE exploit doublepulsar backdoor.
+The first thing we notice is that it launches the executable with -m security arguments, and the %s placeholder is replaced with the file name and path. Then, it attempts to obtain a handle for the service manager with the highest privileges. If it succeeds, it creates a service named mssecsvc2.0 and starts the service. This is undoubtedly a malicious service masquerading as a normal service created by WannaCry. The service attempts to infect connected Windows machines on its local network using the [ETERNALBLUE exploit doublepulsar backdoor](https://www.rapid7.com/security-response/doublepulsar/)
+
 ![initservice.png](initservice.png)
 
 Now, let's delve into the decompiled code of the makedir function to make sense of what is happening. When looking at this function, a couple of things catch our attention. First, it uses the FindResourceA function, which is used by packed malware to store EXE or DLL files within the malware binary itself. After finding and loading the resource, it checks its size. If all goes well, WannaCry creates the directory, which we can see in the code as `C:\\%s\\qeriuwjhrf`. The %s placeholder will be replaced with the file's path leading to the directory. The dropper then extracts the encrypter binary from its resource (R/1831), writes it to the hardcoded filename \tasksche.exe, and then executes it.
