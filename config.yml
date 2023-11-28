@@ -9,7 +9,7 @@ build:
 ignoreErrors: "error-remote-getjson"
 
 
-params:
+params: # each blog post
   ShowBreadCrumbs: true
   ShowToc: true
   ShowCodeCopyButtons: true
@@ -18,12 +18,12 @@ params:
   opengraph: true
   #shareTwitter: true
   dateFormat: 'Mon, Jan 2, 2006'
-  Author: Yahya
+  Author: Yahya Korayem
   
-    # home-info mode
+  # home-info mode
   homeInfoParams:
     Title: "\U0001F44B \U0001F47E \U0001F4BB"
-    Content: Journaling whatever i learn
+    Content: My learning and tinkering journey
   socialIcons: # optional
         - name: Github
           url: "https://github.com/dievoom-png"
@@ -41,7 +41,7 @@ profileMode:
 socialIcons: # optional
         - name: Github
           url: "https://github.com/dievoom-png"
-        - name: Linkedin
+        - name: LinkedIn
           url: "https://www.linkedin.com/in/yahya-ayman-8a27961b4/"
 
 
