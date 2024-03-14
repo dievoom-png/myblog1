@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Dropper on Blog.Yahya</title>
+    <link>//localhost:1313/dropper/</link>
+    <description>Recent content in Dropper on Blog.Yahya</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 13 Sep 2023 14:14:48 +0300</lastBuildDate><atom:link href="//localhost:1313/dropper/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WannaCry Challenge</title>
+      <link>//localhost:1313/posts/wannacry/</link>
+      <pubDate>Wed, 13 Sep 2023 14:14:48 +0300</pubDate>
+      
+      <guid>//localhost:1313/posts/wannacry/</guid>
+      <description>Hey everyone! This challenge marks the end of the PMAT course challenges. I honestly learned a lot from this challenge, especially from the infamous WannaCry ransomware. I hope you learn as much as I did from this challenge! let&amp;rsquo;s get started
+Challenge Link
+1. Record any observed symptoms of infection from initial detonation. What are the main symptoms of a WannaCry infection? Well the obvious symptom that the files on the harddisk start to have a .</description>
+    </item>
+    
+  </channel>
+</rss>

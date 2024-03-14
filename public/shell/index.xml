@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Shell on Blog.Yahya</title>
+    <link>//localhost:1313/shell/</link>
+    <description>Recent content in Shell on Blog.Yahya</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 11 Jul 2023 12:08:34 +0300</lastBuildDate><atom:link href="//localhost:1313/shell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SillyPutty Challenge</title>
+      <link>//localhost:1313/posts/sillyputty/</link>
+      <pubDate>Tue, 11 Jul 2023 12:08:34 +0300</pubDate>
+      
+      <guid>//localhost:1313/posts/sillyputty/</guid>
+      <description>Hello everyone! I&amp;rsquo;ve gotten great feedback about the TCM PMAT course, so I decided to enroll in it. I&amp;rsquo;ve had this course sitting in my purchased courses list for quite some time now, so I finally decided to get right into it and it&amp;rsquo;s been awesome so far!
+In this write up I&amp;rsquo;m solving the first challenge in this course out of 3 and it was lots of fun so i hope you enjoy reading!</description>
+    </item>
+    
+  </channel>
+</rss>
