@@ -28,7 +28,7 @@ params: # each blog post
         - name: Github
           url: "https://github.com/dievoom-png"
         - name: Linkedin
-          url: "https://www.linkedin.com/in/yahya-ayman-8a27961b4/"
+          url: "https://www.linkedin.com/in/yahya-korayem/"
   
   assets:
     favicon: "favicons/favicon.ico"
@@ -42,7 +42,7 @@ socialIcons: # optional
         - name: Github
           url: "https://github.com/dievoom-png"
         - name: LinkedIn
-          url: "https://www.linkedin.com/in/yahya-ayman-8a27961b4/"
+          url: "https://www.linkedin.com/in/yahya-korayem/"
 
 
 
@@ -71,7 +71,7 @@ menu:
     url: /tags/
     weight: 20
     
-  - identifier: archives
-    name: Archives
-    url: /archives/
-    weight: 30
+  # - identifier: archives
+  #   name: Archives
+  #   url: /archives/
+  #   weight: 30

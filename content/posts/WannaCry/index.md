@@ -1,14 +1,15 @@
 ---
-title: "WannaCry Challenge"
+title: WannaCry Challenge
 date: 2023-09-13T14:14:48+03:00
 draft: false
-
 tags:
-- Malware
-- Wireshark
-- Cryptography
-- PE
-- Dropper
+  - Malware
+  - Wireshark
+  - Cryptography
+  - PE
+  - Dropper
+categories:
+  - Writeups
 ---
 
 Hey everyone! This challenge marks the end of the PMAT course challenges. I honestly learned a lot from this challenge, especially from the infamous WannaCry ransomware. I hope you learn as much as I did from this challenge! let's get started

@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Blog.Yahya</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 13 Sep 2023 14:14:48 +0300</lastBuildDate><atom:link href="//localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 Mar 2024 22:00:46 +0200</lastBuildDate><atom:link href="//localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Injecting DLLs in C</title>
+      <link>//localhost:1313/posts/dllinjection/</link>
+      <pubDate>Thu, 14 Mar 2024 22:00:46 +0200</pubDate>
+      
+      <guid>//localhost:1313/posts/dllinjection/</guid>
+      <description>TODO explain what is a DLL injection benefits of DLL injection The code Problems i encounter along the way How to error check Some processes are protected Getting PID Reading docs fix linkdin URL Hey folks, its been a while since i last posted anything on the blog but i am holding myself accountable and gonna be posting again regularly ;) enough of that and let&amp;rsquo;s talk about some DLL injection!</description>
+    </item>
+    
     <item>
       <title>WannaCry Challenge</title>
       <link>//localhost:1313/posts/wannacry/</link>

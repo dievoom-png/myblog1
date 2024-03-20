@@ -6,7 +6,17 @@
     <description>Recent content on Blog.Yahya</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 13 Sep 2023 14:14:48 +0300</lastBuildDate><atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 Mar 2024 22:00:46 +0200</lastBuildDate><atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Injecting DLLs in C</title>
+      <link>//localhost:1313/posts/dllinjection/</link>
+      <pubDate>Thu, 14 Mar 2024 22:00:46 +0200</pubDate>
+      
+      <guid>//localhost:1313/posts/dllinjection/</guid>
+      <description>Hey folks, its been a while since i last posted anything on the blog but i am holding myself accountable and gonna be posting again regularly ;) enough of that and let&amp;rsquo;s talk about some DLL injection! I will explain as much as possible without going onto a lot of tangents so further reading is always encouraged. Of course this is for educational purposes only blah blah.
+DLL Injection??? DLL injection is a &amp;ldquo;sneaky&amp;rdquo; way to insert our code in the address space of the target process thereby executing our code!</description>
+    </item>
+    
     <item>
       <title>WannaCry Challenge</title>
       <link>//localhost:1313/posts/wannacry/</link>

@@ -6,7 +6,18 @@
     <description>Recent content in Writeups on Blog.Yahya</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 11 Jul 2023 12:08:34 +0300</lastBuildDate><atom:link href="//localhost:1313/writeups/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 13 Sep 2023 14:14:48 +0300</lastBuildDate><atom:link href="//localhost:1313/writeups/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WannaCry Challenge</title>
+      <link>//localhost:1313/posts/wannacry/</link>
+      <pubDate>Wed, 13 Sep 2023 14:14:48 +0300</pubDate>
+      
+      <guid>//localhost:1313/posts/wannacry/</guid>
+      <description>Hey everyone! This challenge marks the end of the PMAT course challenges. I honestly learned a lot from this challenge, especially from the infamous WannaCry ransomware. I hope you learn as much as I did from this challenge! let&amp;rsquo;s get started
+Challenge Link
+1. Record any observed symptoms of infection from initial detonation. What are the main symptoms of a WannaCry infection? Well the obvious symptom that the files on the harddisk start to have a .</description>
+    </item>
+    
     <item>
       <title>SillyPutty Challenge</title>
       <link>//localhost:1313/posts/sillyputty/</link>
