@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Windows on Blog.Yahya</title>
-    <link>//localhost:1313/windows/</link>
+    <link>//https://blog.yahyaayman.com/windows/</link>
     <description>Recent content in Windows on Blog.Yahya</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 14 Mar 2024 22:00:46 +0200</lastBuildDate><atom:link href="//localhost:1313/windows/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 Mar 2024 22:00:46 +0200</lastBuildDate><atom:link href="//https://blog.yahyaayman.com/windows/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Injecting DLLs in C</title>
-      <link>//localhost:1313/posts/dllinjection/</link>
+      <link>//https://blog.yahyaayman.com/posts/dllinjection/</link>
       <pubDate>Thu, 14 Mar 2024 22:00:46 +0200</pubDate>
       
-      <guid>//localhost:1313/posts/dllinjection/</guid>
+      <guid>//https://blog.yahyaayman.com/posts/dllinjection/</guid>
       <description>TODO explain what is a DLL injection benefits of DLL injection The code Problems i encounter along the way How to error check Some processes are protected Getting PID Reading docs fix linkdin URL Hey folks, its been a while since i last posted anything on the blog but i am holding myself accountable and gonna be posting again regularly ;) enough of that and let&amp;rsquo;s talk about some DLL injection!</description>
     </item>
     
