@@ -10,7 +10,11 @@ tags:
 categories:
   - Guide
 cover:
-  image: "<DLLInjection75.webp>"
+  image: "<https://i.ibb.co/K0HVPBd/paper-mod-profilemode.png>"
+  # can also paste direct link from external site
+  # ex. https://i.ibb.co/K0HVPBd/paper-mod-profilemode.png
+  alt: "<alt text>"
+  caption: "<text>"
 ---
 
 
