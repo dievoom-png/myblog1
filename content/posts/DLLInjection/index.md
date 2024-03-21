@@ -10,7 +10,7 @@ tags:
 categories:
   - Guide
 cover:
-  image: "<static/favicon.png>"
+  image: "<DLLInjection75.webp>"
 ---
 
 
