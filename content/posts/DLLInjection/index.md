@@ -9,6 +9,8 @@ tags:
   - Windows
 categories:
   - Guide
+cover:
+  image: "<static/favicon.png>"
 ---
 
 
