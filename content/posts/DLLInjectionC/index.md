@@ -9,7 +9,13 @@ tags:
   - Windows
 categories:
   - Guide
-
+cover:
+  image: "<public/img/favicon.ico>"
+  # can also paste direct link from external site
+  # ex. https://i.ibb.co/K0HVPBd/paper-mod-profilemode.png
+  alt: "<DLLinjection>"
+  caption: "<DLLinjection>"
+  relative: false # To use relative path for cover image, used in hugo Page-bundles
 ---
 
 
