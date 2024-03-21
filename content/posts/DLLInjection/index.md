@@ -21,7 +21,6 @@ cover:
 
 Hey folks, its been a while since i last posted anything on the blog but we are back! and gonna be posting again regularly ;)
 I will explain as much as possible without going onto a lot of tangents so further reading is always encouraged.
-
 Of course *this is for educational purposes only* blah blah.
 
 ## DLL Injection???
