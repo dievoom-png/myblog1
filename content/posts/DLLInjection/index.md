@@ -15,6 +15,7 @@ cover:
   # ex. https://i.ibb.co/K0HVPBd/paper-mod-profilemode.png
   alt: "<alt text>"
   caption: "<text>"
+  relative: false
 ---
 
 
