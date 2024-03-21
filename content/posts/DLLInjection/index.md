@@ -131,9 +131,9 @@ Lastly we're finally calling `CreateRemoteThread` to execute our DLL in the targ
 
 ## What's inside a DLL?
 
-Now, what happens when the target process finally calls the DLL? How will it know what to do with it? I mean it was definetly not expecting our DLL in the first place.
+So, what happens when the target process finally calls the DLL? How will it know what to do with it? I mean it was definetly not expecting our DLL in the first place.
 
-Now comes DLLMain.
+And here comes DLLMain.
 DLLs have useful function that serves similiar purose like the main we find in C/++/#, let's take a look:
 
 ```C
@@ -175,6 +175,28 @@ Now lets take a look at the switch cases and in particular `DLL_PROCESS_ATTACH` 
 	break;
 
 ```
+
+## The Hijacking
+
+I hope you're still with me because now we are gonna run notepad and inject our DLL and see what happens!
+
+![run.png](run.png)
+
+It works!!! (DUH)
+
+Thats not enough for us we gotta see the DLL loaded onto notepad. Lets open process explorer and see.
+
+![runningdll.png](runningdll.png)
+
+Indeed everything is going like we expect, we can also check the threads to see our thread running `LoadLibraryW`
+
+![thread.png](thread.png)
+
+For the last thing which we can visualize is the memory allocation for that we need to use processs hacker as process explorer for some reason doesn't show us the memory (as for as i know)
+
+![rwx.png](rwx.png)
+
+Yes the rwx does stick out and it will for any analyst for that we can change `PAGE_EXECUTE_READWRITE` to `PAGE_READWRITE` instead
 
 ## Things to Consider
 
