@@ -1,7 +1,7 @@
 ---
 title: Injecting DLLs in C
 date: 2024-03-21T01:00:46+02:00
-draft: true
+draft: false
 tags:
   - C
   - DLL
