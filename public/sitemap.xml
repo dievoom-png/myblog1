@@ -2,65 +2,65 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//https://blog.yahyaayman.com/</loc>
+    <loc>https://blog.yahyaayman.com/</loc>
     <lastmod>2024-03-14T22:00:46+02:00</lastmod>
   </url><url>
-    <loc>//https://blog.yahyaayman.com/c/</loc>
+    <loc>https://blog.yahyaayman.com/c/</loc>
     <lastmod>2024-03-14T22:00:46+02:00</lastmod>
   </url><url>
-    <loc>//https://blog.yahyaayman.com/categories/</loc>
+    <loc>https://blog.yahyaayman.com/categories/</loc>
     <lastmod>2024-03-14T22:00:46+02:00</lastmod>
   </url><url>
-    <loc>//https://blog.yahyaayman.com/dll/</loc>
+    <loc>https://blog.yahyaayman.com/dll/</loc>
     <lastmod>2024-03-14T22:00:46+02:00</lastmod>
   </url><url>
-    <loc>//https://blog.yahyaayman.com/guide/</loc>
+    <loc>https://blog.yahyaayman.com/guide/</loc>
     <lastmod>2024-03-14T22:00:46+02:00</lastmod>
   </url><url>
-    <loc>//https://blog.yahyaayman.com/posts/dllinjection/</loc>
+    <loc>https://blog.yahyaayman.com/posts/dllinjection/</loc>
     <lastmod>2024-03-14T22:00:46+02:00</lastmod>
   </url><url>
-    <loc>//https://blog.yahyaayman.com/malwaredev/</loc>
+    <loc>https://blog.yahyaayman.com/malwaredev/</loc>
     <lastmod>2024-03-14T22:00:46+02:00</lastmod>
   </url><url>
-    <loc>//https://blog.yahyaayman.com/posts/</loc>
+    <loc>https://blog.yahyaayman.com/posts/</loc>
     <lastmod>2024-03-14T22:00:46+02:00</lastmod>
   </url><url>
-    <loc>//https://blog.yahyaayman.com/tags/</loc>
+    <loc>https://blog.yahyaayman.com/tags/</loc>
     <lastmod>2024-03-14T22:00:46+02:00</lastmod>
   </url><url>
-    <loc>//https://blog.yahyaayman.com/windows/</loc>
+    <loc>https://blog.yahyaayman.com/windows/</loc>
     <lastmod>2024-03-14T22:00:46+02:00</lastmod>
   </url><url>
-    <loc>//https://blog.yahyaayman.com/cryptography/</loc>
+    <loc>https://blog.yahyaayman.com/cryptography/</loc>
     <lastmod>2023-09-13T14:14:48+03:00</lastmod>
   </url><url>
-    <loc>//https://blog.yahyaayman.com/dropper/</loc>
+    <loc>https://blog.yahyaayman.com/dropper/</loc>
     <lastmod>2023-09-13T14:14:48+03:00</lastmod>
   </url><url>
-    <loc>//https://blog.yahyaayman.com/malware/</loc>
+    <loc>https://blog.yahyaayman.com/malware/</loc>
     <lastmod>2023-09-13T14:14:48+03:00</lastmod>
   </url><url>
-    <loc>//https://blog.yahyaayman.com/pe/</loc>
+    <loc>https://blog.yahyaayman.com/pe/</loc>
     <lastmod>2023-09-13T14:14:48+03:00</lastmod>
   </url><url>
-    <loc>//https://blog.yahyaayman.com/posts/wannacry/</loc>
+    <loc>https://blog.yahyaayman.com/posts/wannacry/</loc>
     <lastmod>2023-09-13T14:14:48+03:00</lastmod>
   </url><url>
-    <loc>//https://blog.yahyaayman.com/wireshark/</loc>
+    <loc>https://blog.yahyaayman.com/wireshark/</loc>
     <lastmod>2023-09-13T14:14:48+03:00</lastmod>
   </url><url>
-    <loc>//https://blog.yahyaayman.com/writeups/</loc>
+    <loc>https://blog.yahyaayman.com/writeups/</loc>
     <lastmod>2023-09-13T14:14:48+03:00</lastmod>
   </url><url>
-    <loc>//https://blog.yahyaayman.com/shell/</loc>
+    <loc>https://blog.yahyaayman.com/shell/</loc>
     <lastmod>2023-07-11T12:08:34+03:00</lastmod>
   </url><url>
-    <loc>//https://blog.yahyaayman.com/posts/sillyputty/</loc>
+    <loc>https://blog.yahyaayman.com/posts/sillyputty/</loc>
     <lastmod>2023-07-11T12:08:34+03:00</lastmod>
   </url><url>
-    <loc>//https://blog.yahyaayman.com/ctf/</loc>
+    <loc>https://blog.yahyaayman.com/ctf/</loc>
   </url><url>
-    <loc>//https://blog.yahyaayman.com/posts/mta3/</loc>
+    <loc>https://blog.yahyaayman.com/posts/mta3/</loc>
   </url>
 </urlset>

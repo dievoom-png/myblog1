@@ -2,107 +2,107 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Blog.Yahya</title>
-    <link>//https://blog.yahyaayman.com/tags/</link>
+    <link>https://blog.yahyaayman.com/tags/</link>
     <description>Recent content in Tags on Blog.Yahya</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 14 Mar 2024 22:00:46 +0200</lastBuildDate><atom:link href="//https://blog.yahyaayman.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 Mar 2024 22:00:46 +0200</lastBuildDate><atom:link href="https://blog.yahyaayman.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>C</title>
-      <link>//https://blog.yahyaayman.com/c/</link>
+      <link>https://blog.yahyaayman.com/c/</link>
       <pubDate>Thu, 14 Mar 2024 22:00:46 +0200</pubDate>
       
-      <guid>//https://blog.yahyaayman.com/c/</guid>
+      <guid>https://blog.yahyaayman.com/c/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DLL</title>
-      <link>//https://blog.yahyaayman.com/dll/</link>
+      <link>https://blog.yahyaayman.com/dll/</link>
       <pubDate>Thu, 14 Mar 2024 22:00:46 +0200</pubDate>
       
-      <guid>//https://blog.yahyaayman.com/dll/</guid>
+      <guid>https://blog.yahyaayman.com/dll/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MalwareDev</title>
-      <link>//https://blog.yahyaayman.com/malwaredev/</link>
+      <link>https://blog.yahyaayman.com/malwaredev/</link>
       <pubDate>Thu, 14 Mar 2024 22:00:46 +0200</pubDate>
       
-      <guid>//https://blog.yahyaayman.com/malwaredev/</guid>
+      <guid>https://blog.yahyaayman.com/malwaredev/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Windows</title>
-      <link>//https://blog.yahyaayman.com/windows/</link>
+      <link>https://blog.yahyaayman.com/windows/</link>
       <pubDate>Thu, 14 Mar 2024 22:00:46 +0200</pubDate>
       
-      <guid>//https://blog.yahyaayman.com/windows/</guid>
+      <guid>https://blog.yahyaayman.com/windows/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cryptography</title>
-      <link>//https://blog.yahyaayman.com/cryptography/</link>
+      <link>https://blog.yahyaayman.com/cryptography/</link>
       <pubDate>Wed, 13 Sep 2023 14:14:48 +0300</pubDate>
       
-      <guid>//https://blog.yahyaayman.com/cryptography/</guid>
+      <guid>https://blog.yahyaayman.com/cryptography/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Dropper</title>
-      <link>//https://blog.yahyaayman.com/dropper/</link>
+      <link>https://blog.yahyaayman.com/dropper/</link>
       <pubDate>Wed, 13 Sep 2023 14:14:48 +0300</pubDate>
       
-      <guid>//https://blog.yahyaayman.com/dropper/</guid>
+      <guid>https://blog.yahyaayman.com/dropper/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Malware</title>
-      <link>//https://blog.yahyaayman.com/malware/</link>
+      <link>https://blog.yahyaayman.com/malware/</link>
       <pubDate>Wed, 13 Sep 2023 14:14:48 +0300</pubDate>
       
-      <guid>//https://blog.yahyaayman.com/malware/</guid>
+      <guid>https://blog.yahyaayman.com/malware/</guid>
       <description></description>
     </item>
     
     <item>
       <title>PE</title>
-      <link>//https://blog.yahyaayman.com/pe/</link>
+      <link>https://blog.yahyaayman.com/pe/</link>
       <pubDate>Wed, 13 Sep 2023 14:14:48 +0300</pubDate>
       
-      <guid>//https://blog.yahyaayman.com/pe/</guid>
+      <guid>https://blog.yahyaayman.com/pe/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Wireshark</title>
-      <link>//https://blog.yahyaayman.com/wireshark/</link>
+      <link>https://blog.yahyaayman.com/wireshark/</link>
       <pubDate>Wed, 13 Sep 2023 14:14:48 +0300</pubDate>
       
-      <guid>//https://blog.yahyaayman.com/wireshark/</guid>
+      <guid>https://blog.yahyaayman.com/wireshark/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Shell</title>
-      <link>//https://blog.yahyaayman.com/shell/</link>
+      <link>https://blog.yahyaayman.com/shell/</link>
       <pubDate>Tue, 11 Jul 2023 12:08:34 +0300</pubDate>
       
-      <guid>//https://blog.yahyaayman.com/shell/</guid>
+      <guid>https://blog.yahyaayman.com/shell/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ctf</title>
-      <link>//https://blog.yahyaayman.com/ctf/</link>
+      <link>https://blog.yahyaayman.com/ctf/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>//https://blog.yahyaayman.com/ctf/</guid>
+      <guid>https://blog.yahyaayman.com/ctf/</guid>
       <description></description>
     </item>
     
