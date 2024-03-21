@@ -14,6 +14,8 @@ params: # each blog post
   ShowToc: true
   ShowCodeCopyButtons: true
   ShowReadingTime: true
+  ShowPostNavLinks: true
+  
   #email: yahya.ayman9@gmail.com
   opengraph: true
   #shareTwitter: true
