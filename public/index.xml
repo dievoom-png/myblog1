@@ -2,27 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Blog.Yahya</title>
-    <link>https://blog.yahyaayman.com/</link>
+    <link>//localhost:1313/</link>
     <description>Recent content on Blog.Yahya</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 21 Mar 2024 01:00:46 +0200</lastBuildDate><atom:link href="https://blog.yahyaayman.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Jul 2024 00:01:00 +0300</lastBuildDate><atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HandOnKeylogging</title>
+      <link>//localhost:1313/posts/handonkeylogging/</link>
+      <pubDate>Sun, 21 Jul 2024 00:01:00 +0300</pubDate>
+      
+      <guid>//localhost:1313/posts/handonkeylogging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Understanding Keyloggers</title>
+      <link>//localhost:1313/posts/understanding-keyloggers/</link>
+      <pubDate>Sat, 20 Jul 2024 21:16:19 +0300</pubDate>
+      
+      <guid>//localhost:1313/posts/understanding-keyloggers/</guid>
+      <description>Lately i&amp;rsquo;ve been researching a lot about keyloggers and implementing them in C and that led me into a rabbithole that i will share with you today, but before we start i should put a disclaimer that i will over simplify things so we would understand the things needed for our Windows keylogger not the whole keyboard input mechanism so now thats that out of the way, ever thought how keyboard handles a key input anyways?</description>
+    </item>
+    
     <item>
       <title>Injecting DLLs in C</title>
-      <link>https://blog.yahyaayman.com/posts/dllinjectionc/</link>
+      <link>//localhost:1313/posts/dllinjectionc/</link>
       <pubDate>Thu, 21 Mar 2024 01:00:46 +0200</pubDate>
       
-      <guid>https://blog.yahyaayman.com/posts/dllinjectionc/</guid>
-      <description>Hey folks, its been a while since i last posted anything on the blog but i am holding myself accountable and gonna be posting again regularly ;) enough of that and let&amp;rsquo;s talk about some DLL injection! I will explain as much as possible without going onto a lot of tangents so further reading is always encouraged. Of course this is for educational purposes only blah blah.
+      <guid>//localhost:1313/posts/dllinjectionc/</guid>
+      <description>Hey folks! It&amp;rsquo;s been a while since I last posted anything on the blog but we are back! and gonna be posting again regularly ;) I will explain as much as possible without going on a lot of tangents so further reading is always encouraged. Of course this is for educational purposes only blah blah.
 DLL Injection??? DLL injection is a &amp;ldquo;sneaky&amp;rdquo; way to insert our code in the address space of the target process thereby executing our code!</description>
     </item>
     
     <item>
       <title>WannaCry Challenge</title>
-      <link>https://blog.yahyaayman.com/posts/wannacry/</link>
+      <link>//localhost:1313/posts/wannacry/</link>
       <pubDate>Wed, 13 Sep 2023 14:14:48 +0300</pubDate>
       
-      <guid>https://blog.yahyaayman.com/posts/wannacry/</guid>
+      <guid>//localhost:1313/posts/wannacry/</guid>
       <description>Hey everyone! This challenge marks the end of the PMAT course challenges. I honestly learned a lot from this challenge, especially from the infamous WannaCry ransomware. I hope you learn as much as I did from this challenge! let&amp;rsquo;s get started
 Challenge Link
 1. Record any observed symptoms of infection from initial detonation. What are the main symptoms of a WannaCry infection? Well the obvious symptom that the files on the harddisk start to have a .</description>
@@ -30,20 +48,20 @@ Challenge Link
     
     <item>
       <title>SillyPutty Challenge</title>
-      <link>https://blog.yahyaayman.com/posts/sillyputty/</link>
+      <link>//localhost:1313/posts/sillyputty/</link>
       <pubDate>Tue, 11 Jul 2023 12:08:34 +0300</pubDate>
       
-      <guid>https://blog.yahyaayman.com/posts/sillyputty/</guid>
+      <guid>//localhost:1313/posts/sillyputty/</guid>
       <description>Hello everyone! I&amp;rsquo;ve gotten great feedback about the TCM PMAT course, so I decided to enroll in it. I&amp;rsquo;ve had this course sitting in my purchased courses list for quite some time now, so I finally decided to get right into it and it&amp;rsquo;s been awesome so far!
 In this write up I&amp;rsquo;m solving the first challenge in this course out of 3 and it was lots of fun so i hope you enjoy reading!</description>
     </item>
     
     <item>
       <title>Malware Traffic Analysis 3</title>
-      <link>https://blog.yahyaayman.com/posts/mta3/</link>
+      <link>//localhost:1313/posts/mta3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.yahyaayman.com/posts/mta3/</guid>
+      <guid>//localhost:1313/posts/mta3/</guid>
       <description>Malware Traffic Analysis 3 Created: May 25, 2023 3:46 PM
 The Malware traffic analysis challenge aims to detect the malicious payload and gather the correct information about it to take necessary procedures. Analyzing network traffic and identifying security threats is a huge key to detect and respond to attacks. It also helps in understanding the techniques used by attackers, which in itself helps in setting up better security measures and policies.</description>
     </item>

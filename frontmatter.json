@@ -1,3 +1,40 @@
 {
-  "$schema": "https://frontmatter.codes/frontmatter.schema.json"
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.framework.id": "hugo",
+  "frontMatter.content.publicFolder": "static",
+  "frontMatter.preview.host": "http://localhost:1313",
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "archetypes",
+      "path": "[[workspace]]/archetypes"
+    },
+    {
+      "title": "content/posts/",
+      "path": "[[workspace]]/content/posts/UnderstandingKeyloggers"
+    },
+    {
+      "title": "DLLInjectionC",
+      "path": "[[workspace]]/content/posts/DLLInjectionC"
+    },
+    {
+      "title": "HandOnKeylogging",
+      "path": "[[workspace]]/content/posts/HandOnKeylogging"
+    },
+    {
+      "title": "WannaCry",
+      "path": "[[workspace]]/content/posts/WannaCry"
+    },
+    {
+      "title": "mta3",
+      "path": "[[workspace]]/content/posts/mta3"
+    },
+    {
+      "title": "SillyPutty",
+      "path": "[[workspace]]/content/posts/SillyPutty"
+    },
+    {
+      "title": "UnderstandingKeyloggers",
+      "path": "[[workspace]]/static/posts/UnderstandingKeyloggers"
+    }
+  ]
 }
