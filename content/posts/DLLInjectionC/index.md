@@ -10,7 +10,7 @@ tags:
 categories:
   - Guide
 cover:
-  image: "<public/img/favicon.ico>"
+#image: "<public/img/favicon.ico>"
   # can also paste direct link from external site
   # ex. https://i.ibb.co/K0HVPBd/paper-mod-profilemode.png
   alt: "<dllinjectionc>"

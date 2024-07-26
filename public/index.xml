@@ -22,7 +22,8 @@
       <pubDate>Sat, 20 Jul 2024 21:16:19 +0300</pubDate>
       
       <guid>//localhost:1313/posts/understanding-keyloggers/</guid>
-      <description>Lately i&amp;rsquo;ve been researching a lot about keyloggers and implementing them in C and that led me into a rabbithole that i will share with you today, but before we start i should put a disclaimer that i will over simplify things so we would understand the things needed for our Windows keylogger not the whole keyboard input mechanism so now thats that out of the way, ever thought how keyboard handles a key input anyways?</description>
+      <description>Lately i&amp;rsquo;ve been researching a lot about keyloggers and implementing them in C using system hooks and that led me into a rabbithole that i will share with you today, but before we start i should put a disclaimer that i will over simplify things so we would understand the things needed for our Windows keylogger not the whole keyboard input mechanism.
+So now thats that out of the way, ever thought how keyboard handles a key input anyways?</description>
     </item>
     
     <item>

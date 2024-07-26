@@ -7,7 +7,8 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Understanding Keyloggers | Blog.Yahya</title>
 <meta name="keywords" content="">
-<meta name="description" content="Lately i&rsquo;ve been researching a lot about keyloggers and implementing them in C and that led me into a rabbithole that i will share with you today, but before we start i should put a disclaimer that i will over simplify things so we would understand the things needed for our Windows keylogger not the whole keyboard input mechanism so now thats that out of the way, ever thought how keyboard handles a key input anyways?">
+<meta name="description" content="Lately i&rsquo;ve been researching a lot about keyloggers and implementing them in C using system hooks and that led me into a rabbithole that i will share with you today, but before we start i should put a disclaimer that i will over simplify things so we would understand the things needed for our Windows keylogger not the whole keyboard input mechanism.
+So now thats that out of the way, ever thought how keyboard handles a key input anyways?">
 <meta name="author" content="Yahya Korayem">
 <link rel="canonical" href="//localhost:1313/posts/understanding-keyloggers/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.5cfc680b1eeaeef9efbced92d46c2a9e876b72ee14fba85846afc4cff9e6e6f8.css" integrity="sha256-XPxoCx7q7vnvvO2S1Gwqnodrcu4U&#43;6hYRq/Ez/nm5vg=" rel="preload stylesheet" as="style">
@@ -123,7 +124,7 @@
     <h1 class="post-title">
       Understanding Keyloggers<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
     </h1>
-    <div class="post-meta"><span title='2024-07-20 21:16:19 +0300 EEST'>Sat, Jul 20, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Yahya Korayem
+    <div class="post-meta"><span title='2024-07-20 21:16:19 +0300 EEST'>Sat, Jul 20, 2024</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Yahya Korayem
 
 </div>
   </header> <div class="toc">
@@ -145,23 +146,46 @@
     </details>
 </div>
 
-  <div class="post-content"><p>Lately i&rsquo;ve been researching a lot about keyloggers and implementing them in C and that led me into a rabbithole that i will share with you today, but before we start i should put a disclaimer that i will over simplify things so we would understand the things needed for our Windows keylogger not the whole keyboard input mechanism
-so now thats that out of the way, ever thought how keyboard handles a key input anyways?
+  <div class="post-content"><p>Lately i&rsquo;ve been researching a lot about keyloggers and implementing them in C using system hooks and that led me into a rabbithole that i will share with you today, but before we start i should put a disclaimer that i will over simplify things so we would understand the things needed for our Windows keylogger not the whole keyboard input mechanism.</p>
+<p>So now thats that out of the way, ever thought how keyboard handles a key input anyways?
 because thats what we will be talking about starting with&hellip;</p>
 <h2 id="scan-codes">Scan codes<a hidden class="anchor" aria-hidden="true" href="#scan-codes">#</a></h2>
 <p>Our journey starts with scan codes, you can think of a scan code as a unique identifier for the physical key on your keyboard set by the manufacturer however ever since USB happened its mostly been standardized.
-Scan codes are also layout independent and hardware dependent, but what&rsquo;s that mean?
-<img loading="lazy" src="AZQWERTY.jpg" alt="AZQWERTY"  />
+Scan codes are also layout independent and hardware dependent, but what&rsquo;s that mean?</p>
+<p><img loading="lazy" src="AZQWERTY.jpg" alt="AZQWERTY"  />
 </p>
-<p>Whenever you press on a key on your keyboard, a scan code is sent to the OS  so lets say we pressed A in the QWERTY layout and we got the scan code <code>0x1E</code> for example.
-then we switched the layout to AZERTY in the OS settings and pressed the same key physically we will get the same code <code>0x1E</code> even though its not interpreted as the same character anymore but its the same physical key on the keyboard independent of the layout.</p>
+<p>Whenever you press on a key on your keyboard, a scan code is sent to the OS.</p>
+<p>So lets say we pressed A in the QWERTY layout and we got the scan code <code>0x1E</code> for example. then we switched the layout to AZERTY in the OS settings and pressed the same key physically we will get the same code <code>0x1E</code> even though its not interpreted as the same character anymore but its the same physical key on the keyboard independent of the layout.</p>
+<p>Scan codes are rarely used by applications though as they&rsquo;re easier to deal with especially using the Win32 API. Now after pressing a key the scan code is generated then converted by windows to a virtual key code using the Keyboard Device Driver.</p>
 <h2 id="vk-code">VK code<a hidden class="anchor" aria-hidden="true" href="#vk-code">#</a></h2>
+<p>Now Virtual key codes on the other hand can be looked as as the software as they&rsquo;re higher level and handled by the OS itself, in this case we are talking about windows. Vk-Codes are used by windows to identify keyboard keys Independent of the language selected.</p>
+<p>Let&rsquo;s go back to our example so we can grasp the difference, pressing A in the QWERTY layout (en) will give us <code>VK_A</code> yet if we press the same key in AZERTY (fr) will give us <code>VK_Q</code> as a different <strong>virtual key code</strong> but the same <strong>scan code</strong></p>
+<p><img loading="lazy" src="keylogger1.png" alt="diagram1"  />
+
+This is a simplified diagram to the keyboard input life cycle we covered so far.
+Now the next step is to get the VK-Codes before it reaches the application and we are going to cover that using system hooks.</p>
 <h2 id="hooks">Hooks<a hidden class="anchor" aria-hidden="true" href="#hooks">#</a></h2>
+<p>Hooks are a mechanism that allows us to intercept a certain event as it happens whether that is  for example a key-press or a mouse movement. We have two types of hooks:</p>
 <ol>
-<li>add HID</li>
-<li>MSg loop</li>
+<li>
+<p>Global Hooks.</p>
+</li>
+<li></li>
+<li>
+<p>add HID</p>
+</li>
+<li>
+<p>MSg loop</p>
+</li>
+<li>
+<p>add video to show case scan code of press and release.</p>
+<ol>
+<li>The scancode for key release (`break&rsquo;) is obtained from it by setting the high order bit (adding 0x80 = 128). Thus, Esc press produces scancode 01, Esc release scancode 81 (hex).</li>
+</ol>
+</li>
 <li></li>
 </ol>
+<p>6</p>
 
 
   </div>
