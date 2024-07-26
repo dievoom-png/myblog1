@@ -5,12 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Posts | Blog.Yahya</title>
+<title>Understanding Keyloggers | Blog.Yahya</title>
 <meta name="keywords" content="">
-<meta name="description" content="Posts - Blog.Yahya">
+<meta name="description" content="Lately i&rsquo;ve been researching a lot about keyloggers and implementing them in C and that led me into a rabbithole that i will share with you today, but before we start i should put a disclaimer that i will over simplify things so we would understand the things needed for our Windows keylogger not the whole keyboard input mechanism so now thats that out of the way, ever thought how keyboard handles a key input anyways?">
 <meta name="author" content="Yahya Korayem">
-<link rel="canonical" href="//localhost:1313/posts/">
+<link rel="canonical" href="//localhost:1313/posts/understandingkeyloggers/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.5cfc680b1eeaeef9efbced92d46c2a9e876b72ee14fba85846afc4cff9e6e6f8.css" integrity="sha256-XPxoCx7q7vnvvO2S1Gwqnodrcu4U&#43;6hYRq/Ez/nm5vg=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="//localhost:1313/favicons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
@@ -18,8 +20,7 @@
 <link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="//localhost:1313/posts/index.xml">
-<link rel="alternate" hreflang="en" href="//localhost:1313/posts/">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/understandingkeyloggers/">
 <noscript>
     <style>
         #theme-toggle,
@@ -59,7 +60,7 @@
 </noscript>
 </head>
 
-<body class="list" id="top">
+<body class="" id="top">
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
@@ -114,91 +115,74 @@
         </ul>
     </nav>
 </header>
-<main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="//localhost:1313/">Home</a></div>
-  <h1>
-    Posts
-  </h1>
-</header>
+<main class="main">
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>HandOnKeylogging<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p></p>
-  </div>
-  <footer class="entry-footer"><span title='2024-07-21 00:01:00 +0300 EEST'>Sun, Jul 21, 2024</span>&nbsp;·&nbsp;0 min&nbsp;·&nbsp;Yahya Korayem</footer>
-  <a class="entry-link" aria-label="post link to HandOnKeylogging" href="//localhost:1313/posts/handonkeylogging/"></a>
-</article>
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Understanding Keyloggers<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
+    </h1>
+    <div class="post-meta"><span title='2024-07-20 21:16:19 +0300 EEST'>Sat, Jul 20, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Yahya Korayem
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Understanding Keyloggers<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Lately i’ve been researching a lot about keyloggers and implementing them in C using system hooks and that led me into a rabbithole that i will share with you today, but before we start i should put a disclaimer that i will over simplify things so we would understand the things needed for our Windows keylogger not the whole keyboard input mechanism.
-So now thats that out of the way, ever thought how keyboard handles a key input anyways?...</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-07-20 21:16:19 +0300 EEST'>Sat, Jul 20, 2024</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Yahya Korayem</footer>
-  <a class="entry-link" aria-label="post link to Understanding Keyloggers" href="//localhost:1313/posts/understanding-keyloggers/"></a>
-</article>
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
 
-<article class="post-entry"> 
-<figure class="entry-cover"><img loading="lazy" src="//localhost:1313/%3Cpublic/img/favicon.ico%3E" alt="">
-</figure>
-  <header class="entry-header">
-    <h2>Injecting DLLs in C
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hey folks! It’s been a while since I last posted anything on the blog but we are back! and gonna be posting again regularly ;) I will explain as much as possible without going on a lot of tangents so further reading is always encouraged. Of course this is for educational purposes only blah blah.
-DLL Injection??? DLL injection is a “sneaky” way to insert our code in the address space of the target process thereby executing our code!...</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-03-21 01:00:46 +0200 EET'>Thu, Mar 21, 2024</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;Yahya Korayem</footer>
-  <a class="entry-link" aria-label="post link to Injecting DLLs in C" href="//localhost:1313/posts/dllinjectionc/"></a>
-</article>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#scan-codes" aria-label="Scan codes">Scan codes</a></li>
+                <li>
+                    <a href="#vk-code" aria-label="VK code">VK code</a></li>
+                <li>
+                    <a href="#hooks" aria-label="Hooks">Hooks</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>WannaCry Challenge
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hey everyone! This challenge marks the end of the PMAT course challenges. I honestly learned a lot from this challenge, especially from the infamous WannaCry ransomware. I hope you learn as much as I did from this challenge! let’s get started
-Challenge Link
-1. Record any observed symptoms of infection from initial detonation. What are the main symptoms of a WannaCry infection? Well the obvious symptom that the files on the harddisk start to have a ....</p>
-  </div>
-  <footer class="entry-footer"><span title='2023-09-13 14:14:48 +0300 EEST'>Wed, Sep 13, 2023</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;Yahya Korayem</footer>
-  <a class="entry-link" aria-label="post link to WannaCry Challenge" href="//localhost:1313/posts/wannacry/"></a>
-</article>
+  <div class="post-content"><p>Lately i&rsquo;ve been researching a lot about keyloggers and implementing them in C and that led me into a rabbithole that i will share with you today, but before we start i should put a disclaimer that i will over simplify things so we would understand the things needed for our Windows keylogger not the whole keyboard input mechanism
+so now thats that out of the way, ever thought how keyboard handles a key input anyways?
+because thats what we will be talking about starting with&hellip;</p>
+<h1 id="scan-codes">Scan codes<a hidden class="anchor" aria-hidden="true" href="#scan-codes">#</a></h1>
+<p>Our journey starts with scan codes, you can think of a scan code as a unique identifier for the physical key on your keyboard set by the manufacturer however ever since USB happened its mostly been standardized.
+Scan codes are also layout independent and hardware dependent, but what&rsquo;s that mean?
+<img loading="lazy" src="AZQWERTY.jpg" alt="AZQWERTY"  />
+</p>
+<p>Whenever you press on a key on your keyboard, a scan code is sent to the OS  so lets say we pressed A in the QWERTY layout and we got the scan code <code>0x1E</code> for example.
+then we switched the layout to AZERTY in the OS settings and pressed the same key physically we will get the same code <code>0x1E</code> even though its not interpreted as the same character anymore but its the same physical key on the keyboard independent of the layout.</p>
+<h1 id="vk-code">VK code<a hidden class="anchor" aria-hidden="true" href="#vk-code">#</a></h1>
+<h1 id="hooks">Hooks<a hidden class="anchor" aria-hidden="true" href="#hooks">#</a></h1>
+<ol>
+<li>add HID</li>
+<li>MSg loop</li>
+<li></li>
+</ol>
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>SillyPutty Challenge
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hello everyone! I’ve gotten great feedback about the TCM PMAT course, so I decided to enroll in it. I’ve had this course sitting in my purchased courses list for quite some time now, so I finally decided to get right into it and it’s been awesome so far!
-In this write up I’m solving the first challenge in this course out of 3 and it was lots of fun so i hope you enjoy reading!...</p>
-  </div>
-  <footer class="entry-footer"><span title='2023-07-11 12:08:34 +0300 EEST'>Tue, Jul 11, 2023</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Yahya Korayem</footer>
-  <a class="entry-link" aria-label="post link to SillyPutty Challenge" href="//localhost:1313/posts/sillyputty/"></a>
-</article>
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Malware Traffic Analysis 3
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Malware Traffic Analysis 3 Created: May 25, 2023 3:46 PM
-The Malware traffic analysis challenge aims to detect the malicious payload and gather the correct information about it to take necessary procedures. Analyzing network traffic and identifying security threats is a huge key to detect and respond to attacks. It also helps in understanding the techniques used by attackers, which in itself helps in setting up better security measures and policies....</p>
   </div>
-  <footer class="entry-footer">10 min&nbsp;·&nbsp;Yahya Korayem</footer>
-  <a class="entry-link" aria-label="post link to Malware Traffic Analysis 3" href="//localhost:1313/posts/mta3/"></a>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/posts/handonkeylogging/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>HandOnKeylogging</span>
+  </a>
+  <a class="next" href="//localhost:1313/posts/dllinjectionc/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Injecting DLLs in C</span>
+  </a>
+</nav>
+
+  </footer>
 </article>
     </main>
     
@@ -269,6 +253,53 @@ The Malware traffic analysis challenge aims to detect the malicious payload and 
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 

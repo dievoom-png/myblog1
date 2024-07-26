@@ -2,65 +2,71 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.yahyaayman.com/</loc>
-    <lastmod>2024-03-14T22:00:46+02:00</lastmod>
+    <loc>//localhost:1313/</loc>
+    <lastmod>2024-07-21T00:01:00+03:00</lastmod>
   </url><url>
-    <loc>https://blog.yahyaayman.com/c/</loc>
-    <lastmod>2024-03-14T22:00:46+02:00</lastmod>
+    <loc>//localhost:1313/posts/handonkeylogging/</loc>
+    <lastmod>2024-07-21T00:01:00+03:00</lastmod>
   </url><url>
-    <loc>https://blog.yahyaayman.com/categories/</loc>
-    <lastmod>2024-03-14T22:00:46+02:00</lastmod>
+    <loc>//localhost:1313/posts/</loc>
+    <lastmod>2024-07-21T00:01:00+03:00</lastmod>
   </url><url>
-    <loc>https://blog.yahyaayman.com/dll/</loc>
-    <lastmod>2024-03-14T22:00:46+02:00</lastmod>
+    <loc>//localhost:1313/posts/understanding-keyloggers/</loc>
+    <lastmod>2024-07-20T21:16:19+03:00</lastmod>
   </url><url>
-    <loc>https://blog.yahyaayman.com/guide/</loc>
-    <lastmod>2024-03-14T22:00:46+02:00</lastmod>
+    <loc>//localhost:1313/c/</loc>
+    <lastmod>2024-03-21T01:00:46+02:00</lastmod>
   </url><url>
-    <loc>https://blog.yahyaayman.com/posts/dllinjectionc/</loc>
-    <lastmod>2024-03-14T22:00:46+02:00</lastmod>
+    <loc>//localhost:1313/categories/</loc>
+    <lastmod>2024-03-21T01:00:46+02:00</lastmod>
   </url><url>
-    <loc>https://blog.yahyaayman.com/malwaredev/</loc>
-    <lastmod>2024-03-14T22:00:46+02:00</lastmod>
+    <loc>//localhost:1313/dll/</loc>
+    <lastmod>2024-03-21T01:00:46+02:00</lastmod>
   </url><url>
-    <loc>https://blog.yahyaayman.com/posts/</loc>
-    <lastmod>2024-03-14T22:00:46+02:00</lastmod>
+    <loc>//localhost:1313/guide/</loc>
+    <lastmod>2024-03-21T01:00:46+02:00</lastmod>
   </url><url>
-    <loc>https://blog.yahyaayman.com/tags/</loc>
-    <lastmod>2024-03-14T22:00:46+02:00</lastmod>
+    <loc>//localhost:1313/posts/dllinjectionc/</loc>
+    <lastmod>2024-03-21T01:00:46+02:00</lastmod>
   </url><url>
-    <loc>https://blog.yahyaayman.com/windows/</loc>
-    <lastmod>2024-03-14T22:00:46+02:00</lastmod>
+    <loc>//localhost:1313/malwaredev/</loc>
+    <lastmod>2024-03-21T01:00:46+02:00</lastmod>
   </url><url>
-    <loc>https://blog.yahyaayman.com/cryptography/</loc>
+    <loc>//localhost:1313/tags/</loc>
+    <lastmod>2024-03-21T01:00:46+02:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/windows/</loc>
+    <lastmod>2024-03-21T01:00:46+02:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/cryptography/</loc>
     <lastmod>2023-09-13T14:14:48+03:00</lastmod>
   </url><url>
-    <loc>https://blog.yahyaayman.com/dropper/</loc>
+    <loc>//localhost:1313/dropper/</loc>
     <lastmod>2023-09-13T14:14:48+03:00</lastmod>
   </url><url>
-    <loc>https://blog.yahyaayman.com/malware/</loc>
+    <loc>//localhost:1313/malware/</loc>
     <lastmod>2023-09-13T14:14:48+03:00</lastmod>
   </url><url>
-    <loc>https://blog.yahyaayman.com/pe/</loc>
+    <loc>//localhost:1313/pe/</loc>
     <lastmod>2023-09-13T14:14:48+03:00</lastmod>
   </url><url>
-    <loc>https://blog.yahyaayman.com/posts/wannacry/</loc>
+    <loc>//localhost:1313/posts/wannacry/</loc>
     <lastmod>2023-09-13T14:14:48+03:00</lastmod>
   </url><url>
-    <loc>https://blog.yahyaayman.com/wireshark/</loc>
+    <loc>//localhost:1313/wireshark/</loc>
     <lastmod>2023-09-13T14:14:48+03:00</lastmod>
   </url><url>
-    <loc>https://blog.yahyaayman.com/writeups/</loc>
+    <loc>//localhost:1313/writeups/</loc>
     <lastmod>2023-09-13T14:14:48+03:00</lastmod>
   </url><url>
-    <loc>https://blog.yahyaayman.com/shell/</loc>
+    <loc>//localhost:1313/shell/</loc>
     <lastmod>2023-07-11T12:08:34+03:00</lastmod>
   </url><url>
-    <loc>https://blog.yahyaayman.com/posts/sillyputty/</loc>
+    <loc>//localhost:1313/posts/sillyputty/</loc>
     <lastmod>2023-07-11T12:08:34+03:00</lastmod>
   </url><url>
-    <loc>https://blog.yahyaayman.com/ctf/</loc>
+    <loc>//localhost:1313/ctf/</loc>
   </url><url>
-    <loc>https://blog.yahyaayman.com/posts/mta3/</loc>
+    <loc>//localhost:1313/posts/mta3/</loc>
   </url>
 </urlset>
