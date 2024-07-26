@@ -9,10 +9,10 @@
     <lastBuildDate>Thu, 14 Mar 2024 22:00:46 +0200</lastBuildDate><atom:link href="https://blog.yahyaayman.com/c/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Injecting DLLs in C</title>
-      <link>https://blog.yahyaayman.com/posts/dllinjection/</link>
+      <link>https://blog.yahyaayman.com/posts/dllinjectionc/</link>
       <pubDate>Thu, 14 Mar 2024 22:00:46 +0200</pubDate>
       
-      <guid>https://blog.yahyaayman.com/posts/dllinjection/</guid>
+      <guid>https://blog.yahyaayman.com/posts/dllinjectionc/</guid>
       <description>TODO explain what is a DLL injection benefits of DLL injection The code Problems i encounter along the way How to error check Some processes are protected Getting PID Reading docs fix linkdin URL Hey folks, its been a while since i last posted anything on the blog but i am holding myself accountable and gonna be posting again regularly ;) enough of that and let&amp;rsquo;s talk about some DLL injection!</description>
     </item>
     
