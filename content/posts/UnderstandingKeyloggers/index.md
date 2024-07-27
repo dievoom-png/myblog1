@@ -36,7 +36,6 @@ This is a simplified diagram to the keyboard input life cycle we covered so far.
 
 So the diagram above is a lie. Well not all of it but when the keyboard device driver converts the scan code to Vk-Codes it's actually moved around windows as Messages and those messages contain
 
-
 ## Hooks
 
 Hooks are a mechanism that allows us to intercept a certain event as it happens whether that is  for example a key-press or a mouse movement.
