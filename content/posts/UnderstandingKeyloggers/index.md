@@ -9,16 +9,13 @@ tags:
   - Windows
   -  Keylogger
   -  Hooks
-  -  
 categories:
   - Guide
 cover:
-Image: "<public/img/keyloggers.jpg>"
-  # can also paste direct link from external site
-  # ex. https://i.ibb.co/K0HVPBd/paper-mod-profilemode.png
-  alt: "<keyloggers>"
-  caption: "<keyloggers>"
-  relative: false # To use relative path for cover image, used in hugo Page-bundles
+    Image: "<public/img/keyloggers.jpg>"
+    alt: "<keyloggers>"
+    caption: "<keyloggers>"
+    relative: false # To use relative path for cover image, used in hugo Page-bundles
 
 ---
 
