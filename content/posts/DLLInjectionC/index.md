@@ -7,6 +7,7 @@ tags:
   - DLL
   - MalwareDev
   - Windows
+  -  Win32API
 categories:
   - Guide
 cover:
