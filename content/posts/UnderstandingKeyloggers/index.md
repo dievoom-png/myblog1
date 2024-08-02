@@ -1,7 +1,7 @@
 ---
 title: Understanding Keyloggers 1
 date: 2024-07-20t21:16:19+03:00
-draft: false
+
 tags:
   - C
   - Win32API
@@ -23,7 +23,8 @@ cover:
 One day i decided to sharpen my C skills and get to implementing a keylogger. But then i found myself lost in a rabbithole of MSDN docs, Stackoverflow threads and other forums dating to 2002 or something...
 So i wrote this for whoever wants to learn more about how actually keylogging works so hopefully you won't find yourself reading a  22 year old post ;)
 
-> Please note that some concepts have been simplified for the purpose of this keylogger implementation. This is done to focus on the core functionality and should not be considered a comprehensive treatment of the underlying principles.
+> Please note that some concepts have been simplified for the purpose of this keylogger implementation. This is done to focus on the core functionality and should not be considered a comprehensive treatment of the underlying principles. Ofcourse *this is for educational purposes only* blah blah.
+
 
 So now thats that out of the way, ever thought how keyboard handles a key input anyways?
 because thats what we will be talking about starting with...
