@@ -1,7 +1,6 @@
 ---
 title: Understanding Keyloggers 1
-date: 2024-07-20t21:16:19+03:00
-
+date: 2024-08-02T15:35:45.725Z
 tags:
   - C
   - Win32API
