@@ -11,10 +11,10 @@ tags:
 categories:
   - Guide
 cover:
-    Image: "public/img/keyloggers.jpg"
-    alt: "keyloggers"
-    caption: "keyloggers"
-    relative: false # To use relative path for cover image, used in hugo Page-bundles
+    Image: "keyloggers.jpg"
+    #alt: "keyloggers"
+    #caption: "keyloggers"
+    relative: true # To use relative path for cover image, used in hugo Page-bundles
 
 ---
 
