@@ -69,7 +69,7 @@ Let's start from the begnning:
 2. The scan code of the key is sent to the os.
 3. Keyboard device driver translates/maps that scan code to a vk-code that is found in the message.
 4. The message is posted to the system message queue before the os can send the message to discord's thead queue.
-5. The thread message loop is what fetches new message posted to discords thread queue and passes it to windows procedure.
+5. The thread message loop is what fetches new message posted to discord's thread queue and passes it to windows procedure.
 
  ```C
     
