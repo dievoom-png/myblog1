@@ -11,12 +11,12 @@ tags:
 categories:
   - Guide
 cover:
- image: "DLLInjection.webp"
+	image: "DLLInjection.webp"
   # can also paste direct link from external site
   # ex. https://i.ibb.co/K0HVPBd/paper-mod-profilemode.png
   #alt: "<dllinjectionc>"
   #caption: "<dllinjectionc>"
-  relative: true # To use relative path for cover image, used in hugo Page-bundles
+  	relative: true # To use relative path for cover image, used in hugo Page-bundles
 ---
 
 
