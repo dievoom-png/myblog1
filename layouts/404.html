@@ -1,0 +1,24 @@
+{{ define "main" }}
+  <section class="flex flex-col items-center justify-center py-16 text-center">
+    <p class="text-7xl font-extrabold tracking-tight text-primary-500 sm:text-9xl">404</p>
+    <h1 class="mt-4 text-2xl font-bold text-neutral-800 dark:text-neutral sm:text-3xl">
+      Signal lost.
+    </h1>
+    <p class="mt-4 max-w-prose text-neutral-500 dark:text-neutral-400">
+      This page slipped past detection — it may have been moved, renamed, or
+      never existed. Let&rsquo;s get you back to safety.
+    </p>
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+      <a
+        href="{{ "" | relLangURL }}"
+        class="rounded-md bg-primary-600 px-4 py-2 font-medium text-white transition-colors hover:bg-primary-500">
+        &larr; Home
+      </a>
+      <a
+        href="{{ "posts/" | relLangURL }}"
+        class="rounded-md border border-primary-500 px-4 py-2 font-medium text-primary-700 transition-colors dark:text-primary-300">
+        Browse posts
+      </a>
+    </div>
+  </section>
+{{ end }}
