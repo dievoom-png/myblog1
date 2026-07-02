@@ -2,21 +2,16 @@
 title: Injecting DLLs in C
 date: 2024-03-21T01:00:46+02:00
 draft: false
+summary: "A hands-on look at classic DLL injection on Windows in C — how it works, how it differs from DLL hijacking, and the Win32 API calls involved."
+description: "Classic DLL injection on Windows, implemented in C with the Win32 API."
 tags:
   - C
   - DLL
   - MalwareDev
   - Windows
-  -  Win32API
+  - Win32API
 categories:
   - Guide
-  
-cover:
-    Image: "DLLInjection.webp"
-    #alt: "keyloggers"
-    #caption: "keyloggers"
-    relative: true # To use relative path for cover image, used in hugo Page-bundles
-
 ---
 
 

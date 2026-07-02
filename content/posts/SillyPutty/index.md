@@ -2,6 +2,8 @@
 title : "SillyPutty Challenge"
 date: 2023-07-11T12:08:34+03:00
 draft: false
+summary: "First PMAT challenge: reversing a trojanized PuTTY — strings, PE architecture, decoded PowerShell, and the C2 connection over SSL."
+description: "Reversing the SillyPutty malware from the TCM PMAT course, from static analysis to C2 traffic."
 categories:
 - Writeups
 tags:

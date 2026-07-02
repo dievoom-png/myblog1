@@ -1,24 +1,20 @@
 ---
 title: Understanding Keyloggers 1
 date: 2024-08-03T09:22:12.343Z
+summary: "Part 1 of building a keylogger in C: how Windows delivers keyboard input, and the hooks and Win32 API calls that capture it."
+description: "How keyloggers capture keystrokes on Windows using hooks and the Win32 API."
 tags:
   - C
   - Win32API
   - MalwareDev
   - Windows
-  -  Keylogger
-  -  Hooks
+  - Keylogger
+  - Hooks
 categories:
   - Guide
 series:
   - Keyloggers
 series_order: 1
-cover:
-    Image: "keyloggers.jpg"
-    #alt: "keyloggers"
-    #caption: "keyloggers"
-    relative: true # To use relative path for cover image, used in hugo Page-bundles
-
 ---
 
 

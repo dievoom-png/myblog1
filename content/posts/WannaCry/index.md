@@ -2,6 +2,8 @@
 title: WannaCry Challenge
 date: 2023-09-13T14:14:48+03:00
 draft: false
+summary: "The PMAT course finale: analyzing WannaCry ransomware — infection symptoms, PE internals, network behavior, and the killswitch domain."
+description: "A PMAT analysis of WannaCry ransomware: symptoms, PE internals, and network traffic."
 tags:
   - Malware
   - Wireshark

@@ -1,15 +1,16 @@
 ---
 title : "Malware Traffic Analysis 3"
 date: 2023-05-25T15:46:00+03:00
+summary: "Working the Malware-Traffic-Analysis #3 challenge: dissecting a PCAP in Wireshark to find the malicious payload and pull out its indicators."
+description: "A Wireshark walkthrough of the Malware Traffic Analysis 3 challenge."
 categories:
 - Writeups
 tags:
 - Malware
 - Wireshark
-- Ctf
+- CTF
 - Cryptography
 - PE
-#archives: archives
 ---
 
 # Malware Traffic Analysis 3
