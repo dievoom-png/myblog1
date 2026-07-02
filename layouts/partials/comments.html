@@ -1,0 +1,20 @@
+{{/* giscus comments — renders only once configured in params.toml [giscus] */}}
+{{ with .Site.Params.giscus }}
+  {{ if .repo }}
+    <script src="https://giscus.app/client.js"
+      data-repo="{{ .repo }}"
+      data-repo-id="{{ .repoId }}"
+      data-category="{{ .category | default "General" }}"
+      data-category-id="{{ .categoryId }}"
+      data-mapping="{{ .mapping | default "pathname" }}"
+      data-strict="0"
+      data-reactions-enabled="{{ .reactionsEnabled | default 1 }}"
+      data-emit-metadata="{{ .emitMetadata | default 0 }}"
+      data-input-position="{{ .inputPosition | default "top" }}"
+      data-theme="{{ if eq site.Params.defaultAppearance "dark" }}dark{{ else }}light{{ end }}"
+      data-lang="{{ .lang | default "en" }}"
+      crossorigin="anonymous"
+      async>
+    </script>
+  {{ end }}
+{{ end }}

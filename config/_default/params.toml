@@ -31,7 +31,7 @@ smartTOC = true
   showRecentItems = 6
   showMoreLink = true
   showMoreLinkDest = "/posts/"
-  cardView = true
+  cardView = false
   cardViewScreenWidth = false
 
 [article]
@@ -60,9 +60,9 @@ smartTOC = true
   showBreadcrumbs = true
   showSummary = true
   showTableOfContents = false
-  showCards = true
+  showCards = false
   groupByYear = true
-  cardView = true
+  cardView = false
   cardViewScreenWidth = false
 
 [sitemap]
@@ -75,4 +75,34 @@ smartTOC = true
   showBreadcrumbs = true
   showTableOfContents = false
   groupByYear = false
-  cardView = true
+  cardView = false
+
+# --- Comments (giscus) ---
+# Enabled below; the comments partial only renders once giscus.repo is filled in.
+# Setup: make the repo public → enable Discussions → install the giscus app
+# (https://github.com/apps/giscus) → get IDs from https://giscus.app
+comments = true
+
+[giscus]
+  repo = ""            # e.g. "dievoom-png/myblog1"
+  repoId = ""          # from giscus.app
+  category = "General" # a Discussions category, e.g. "Announcements"
+  categoryId = ""      # from giscus.app
+  mapping = "pathname"
+  reactionsEnabled = 1
+  emitMetadata = 0
+  inputPosition = "top"
+  lang = "en"
+
+# --- Likes & views (Firebase) ---
+# To enable: create a Firebase project + Firestore, paste the web-app config
+# below, then set article.showViews / article.showLikes = true above.
+# (Left off for now — enabling without config shows a permanent loading spinner.)
+[firebase]
+  apiKey = ""
+  authDomain = ""
+  projectId = ""
+  storageBucket = ""
+  messagingSenderId = ""
+  appId = ""
+  measurementId = ""

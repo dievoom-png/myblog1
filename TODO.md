@@ -10,9 +10,9 @@
 - [ ] Tune the `deep-purple` scheme if needed (`assets/css/schemes/deep-purple.css` — one line per shade)
 
 ## Blog — features to enable later
-- [ ] Comments via giscus (GitHub Discussions) — Blowfish has a comments partial
+- [~] Comments via giscus — WIRED (`layouts/partials/comments.html`, `[giscus]` in params, `comments = true`). Dormant until repo IDs filled in. Steps: make repo public → enable Discussions → install giscus app → paste repo/repoId/category/categoryId from giscus.app
+- [~] Post view counts & likes — WIRED (`[firebase]` params). Dormant until Firebase config pasted AND `article.showViews`/`article.showLikes` set true (enabling without config shows a permanent loading spinner)
 - [ ] Analytics (Umami / Fathom / Google Analytics — all supported in params)
-- [ ] Post view counts & likes (Blowfish built-in, needs a free Firebase project)
 - [ ] Use Mermaid diagrams / KaTeX / chart shortcodes in technical write-ups (e.g. malware flow diagrams)
 - [ ] About page
 - [ ] Finish & publish HandOnKeylogging draft (part 2 of the Keyloggers series)
