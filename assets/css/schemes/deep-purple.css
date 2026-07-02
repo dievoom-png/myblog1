@@ -1,6 +1,6 @@
 /* Deep Purple scheme — custom for Blog.Yahya
-   Primary: Tailwind violet · Secondary: Tailwind fuchsia
-   Neutrals: purple-tinted, extra dark in dark mode */
+   Primary: electric violet · Secondary: fuchsia (tag/accent colors)
+   Neutrals: near-black with a purple tint in dark mode */
 :root {
   --color-neutral: 255, 255, 255;
   /* Purple-tinted grays (800/900 drive the dark-mode background) */
@@ -11,20 +11,20 @@
   --color-neutral-400: 150, 138, 170;
   --color-neutral-500: 115, 103, 135;
   --color-neutral-600: 85, 73, 105;
-  --color-neutral-700: 55, 45, 75;
-  --color-neutral-800: 22, 15, 38;
-  --color-neutral-900: 12, 7, 24;
-  /* Violet */
-  --color-primary-50: 245, 243, 255;
-  --color-primary-100: 237, 233, 254;
-  --color-primary-200: 221, 214, 254;
-  --color-primary-300: 196, 181, 253;
-  --color-primary-400: 167, 139, 250;
-  --color-primary-500: 139, 92, 246;
-  --color-primary-600: 124, 58, 237;
-  --color-primary-700: 109, 40, 217;
-  --color-primary-800: 91, 33, 182;
-  --color-primary-900: 76, 29, 149;
+  --color-neutral-700: 38, 28, 58;
+  --color-neutral-800: 10, 6, 18;
+  --color-neutral-900: 5, 3, 8;
+  /* Electric violet */
+  --color-primary-50: 246, 243, 255;
+  --color-primary-100: 238, 231, 255;
+  --color-primary-200: 224, 211, 255;
+  --color-primary-300: 202, 177, 255;
+  --color-primary-400: 178, 137, 255;
+  --color-primary-500: 154, 92, 255;
+  --color-primary-600: 132, 50, 255;
+  --color-primary-700: 114, 28, 230;
+  --color-primary-800: 94, 23, 188;
+  --color-primary-900: 77, 20, 152;
   /* Fuchsia */
   --color-secondary-50: 253, 244, 255;
   --color-secondary-100: 250, 232, 255;
