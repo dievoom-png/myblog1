@@ -9,6 +9,11 @@ enableSearch = true
 enableCodeCopy = true
 disableImageZoom = false  # click any content image to zoom (medium-zoom)
 
+# OG/Twitter card fallback when a post has no featured.* image (every current
+# post has one = its first image). Name an image `featured.*` in a post bundle
+# and it becomes the card thumbnail, hero, AND social share image.
+defaultSocialImage = "img/author.jpg"
+
 mainSections = ["posts"]
 
 disableImageOptimization = false
