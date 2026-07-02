@@ -7,6 +7,7 @@ autoSwitchAppearance = true
 
 enableSearch = true
 enableCodeCopy = true
+disableImageZoom = false  # click any content image to zoom (medium-zoom)
 
 mainSections = ["posts"]
 

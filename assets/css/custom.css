@@ -1,3 +1,36 @@
+/* ── Self-hosted fonts (variable, single file each — no external requests) ── */
+@font-face {
+  font-family: "Inter Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("/fonts/inter-variable.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 800;
+  src: url("/fonts/jetbrains-mono-variable.woff2") format("woff2");
+}
+:root {
+  --default-font-family: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --default-mono-font-family: "JetBrains Mono Variable", ui-monospace,
+    SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* ── Content images (screenshots): subtle frame; they also zoom on click ── */
+.prose img:not(.nozoom) {
+  border-radius: 0.5rem;
+  border: 1px solid rgba(var(--color-neutral-700), 0.7);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* Give catppuccin-mocha code blocks rounded corners consistent with the theme */
+.prose .chroma {
+  border-radius: 0.5rem;
+}
+
 /* Mobile: auto-hide the fixed top header when scrolling down, reveal on scroll up.
    The class is added by layouts/partials/extend-footer.html; the transform only
    applies on small screens so desktop keeps a static header. */

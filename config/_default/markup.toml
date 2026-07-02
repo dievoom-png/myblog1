@@ -3,7 +3,11 @@
     unsafe = true
 
 [highlight]
-  noClasses = false
+  # Inline the syntax colors from a dark, purple-tinted Chroma style so code
+  # blocks match the deep-purple theme (instead of Blowfish's GitHub colors).
+  noClasses = true
+  style = "catppuccin-mocha"
+  tabWidth = 4
 
 [tableOfContents]
   startLevel = 2
