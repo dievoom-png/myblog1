@@ -1,0 +1,13 @@
+/* Mobile: auto-hide the fixed top header when scrolling down, reveal on scroll up.
+   The class is added by layouts/partials/extend-footer.html; the transform only
+   applies on small screens so desktop keeps a static header. */
+@media (max-width: 767px) {
+  .bf-autohide-header {
+    transition: transform 0.35s ease;
+    will-change: transform;
+  }
+  .bf-autohide-header.bf-header-hidden {
+    transform: translateY(-100%);
+    pointer-events: none;
+  }
+}

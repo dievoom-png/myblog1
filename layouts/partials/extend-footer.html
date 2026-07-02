@@ -1,0 +1,39 @@
+{{/* Mobile: auto-hide the fixed top header on scroll-down, reveal on scroll-up.
+     Pairs with .bf-autohide-header rules in assets/css/custom.css. */}}
+<script>
+  (function () {
+    var blur = document.getElementById("menu-blur");
+    var header = blur && blur.parentElement; // the fixed header container
+    if (!header) return;
+    header.classList.add("bf-autohide-header");
+
+    var lastY = window.scrollY || 0;
+    var ticking = false;
+    var DELTA = 6; // ignore tiny scroll jitters
+    var REVEAL_AT = 148; // always show near the very top
+
+    function update() {
+      var y = window.scrollY || 0;
+      if (y <= REVEAL_AT) {
+        header.classList.remove("bf-header-hidden");
+      } else if (y > lastY + DELTA) {
+        header.classList.add("bf-header-hidden"); // scrolling down
+      } else if (y < lastY - DELTA) {
+        header.classList.remove("bf-header-hidden"); // scrolling up
+      }
+      lastY = y;
+      ticking = false;
+    }
+
+    window.addEventListener(
+      "scroll",
+      function () {
+        if (!ticking) {
+          window.requestAnimationFrame(update);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+  })();
+</script>
