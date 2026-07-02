@@ -36,7 +36,7 @@ because thats what we will be talking about starting with...
 Our journey starts with scan codes, you can think of a scan code as a unique identifier for the physical key on your keyboard set by the manufacturer however ever since usb happened its mostly been standardized.
 scan codes are also layout independent and hardware dependent, but what's that mean?
 
-![azqwerty](azqwerty.jpg)
+![azqwerty](AZQWERTY.jpg)
 
 Whenever you press on a key on your keyboard, a scan code is sent to the os.
 

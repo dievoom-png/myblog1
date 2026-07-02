@@ -249,7 +249,7 @@ Maybe there’s an easier way to do this but that's how i did it.
 
 Using network miner and opening the files tab and sorting them by extension we see a lot of .cer files and we can just by eying it conclude that google has a huge number of certificates captured in this pcap file
 
-![Untitled](untitled%2026.png)
+![Untitled](Untitled%2026.png)
 
 And that’s a wrap. This challenge had some difficult moments for sure mostly because i stepped into unfamiliar grounds.
 

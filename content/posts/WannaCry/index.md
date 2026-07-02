@@ -21,10 +21,10 @@ Well the obvious symptom that the files on the harddisk start to have a .wncry e
 ![wncryExt.png](wncryExt.png)
 ![payRansom.png](payRansom.png)
 Additionally, I later noticed that DiskPart starts running when the malware is executed. It becomes apparent that it is, in fact, "tasksche" associated with the malware, running from the malware's working directory.
-![MalwareDet.png](MalwareDet.png)
+![MalwareDet.png](malwareDet.png)
 ## 2. Use FLOSS and extract the strings from the main WannaCry binary. Are there any strings of interest?
 We can see a couple of ip addresses in the strings and a couple of strings that could give us a hint about the used technologies in the malware like sqlite and also from the strings like the errors and C++ runtime library we can conclude its in C/C++ yet the existence of .class strings guides us towards C++
-![Strings.png](Strings.png)
+![Strings.png](strings.png)
 ## 3. Inspect the import address table for the main WannaCry binary. Are there any notable API imports?
 When checking the imports table we can see that there are imports used to connect to an URL like InternetOpenUrlA and other socket imports like [WSAStartup] that is used to initialize [Winsock] to set up sockets on the windows machine which hints that the malware has some network indicators we can look into later.
 There is also some encryption functions which will be used to encrypt the data ion the hard-disk and some potential process injection functions like [CreateProcessA]

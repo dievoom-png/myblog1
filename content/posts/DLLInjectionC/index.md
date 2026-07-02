@@ -116,7 +116,7 @@ So when specifying the size to allocate in bytes we are specifying the **size of
 
 Finally the `VirutalAllocEx` returns the start address(pointer) of our newly acquired buffer in the target process!
 
-![sizeof.png](sizeof.png)
+![sizeof.png](Sizeof.png)
 
 ```C
 WriteProcessMemory(HTarget, buffer, (LPVOID)DLLPath, sizeof(DLLPath), 0)
