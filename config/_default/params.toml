@@ -1,0 +1,108 @@
+# Blowfish theme parameters
+# Full reference: https://blowfish.page/docs/configuration/
+
+colorScheme = "deep-purple"
+defaultAppearance = "dark"
+autoSwitchAppearance = true
+
+enableSearch = true
+enableCodeCopy = true
+
+mainSections = ["posts"]
+
+disableImageOptimization = false
+
+highlightCurrentMenuArea = true
+smartTOC = true
+
+[header]
+  layout = "fixed-fill-blur"
+
+[footer]
+  showMenu = true
+  showCopyright = true
+  showThemeAttribution = true
+  showAppearanceSwitcher = true
+  showScrollToTop = true
+
+[homepage]
+  layout = "profile"
+  showRecent = true
+  showRecentItems = 6
+  showMoreLink = true
+  showMoreLinkDest = "/posts/"
+  cardView = false
+  cardViewScreenWidth = false
+
+[article]
+  showDate = true
+  showAuthor = true
+  showHero = true
+  heroStyle = "background"
+  layoutBackgroundBlur = true
+  showBreadcrumbs = true
+  showDraftLabel = true
+  showEdit = false
+  showHeadingAnchors = true
+  showPagination = true
+  showReadingTime = true
+  showTableOfContents = true
+  showTaxonomies = true
+  showWordCount = false
+  showZenMode = true
+  sharingLinks = ["linkedin", "twitter", "reddit", "email"]
+  showRelatedContent = true
+  relatedContentLimit = 3
+  seriesOpened = false
+
+[list]
+  showHero = false
+  showBreadcrumbs = true
+  showSummary = true
+  showTableOfContents = false
+  showCards = false
+  groupByYear = true
+  cardView = false
+  cardViewScreenWidth = false
+
+[sitemap]
+  excludedKinds = ["taxonomy", "term"]
+
+[taxonomy]
+  showTermCount = true
+
+[term]
+  showBreadcrumbs = true
+  showTableOfContents = false
+  groupByYear = false
+  cardView = false
+
+# --- Comments (giscus) ---
+# Enabled below; the comments partial only renders once giscus.repo is filled in.
+# Setup: make the repo public → enable Discussions → install the giscus app
+# (https://github.com/apps/giscus) → get IDs from https://giscus.app
+comments = true
+
+[giscus]
+  repo = ""            # e.g. "dievoom-png/myblog1"
+  repoId = ""          # from giscus.app
+  category = "General" # a Discussions category, e.g. "Announcements"
+  categoryId = ""      # from giscus.app
+  mapping = "pathname"
+  reactionsEnabled = 1
+  emitMetadata = 0
+  inputPosition = "top"
+  lang = "en"
+
+# --- Likes & views (Firebase) ---
+# To enable: create a Firebase project + Firestore, paste the web-app config
+# below, then set article.showViews / article.showLikes = true above.
+# (Left off for now — enabling without config shows a permanent loading spinner.)
+[firebase]
+  apiKey = ""
+  authDomain = ""
+  projectId = ""
+  storageBucket = ""
+  messagingSenderId = ""
+  appId = ""
+  measurementId = ""

@@ -10,6 +10,9 @@ tags:
   -  Hooks
 categories:
   - Guide
+series:
+  - Keyloggers
+series_order: 1
 cover:
     Image: "keyloggers.jpg"
     #alt: "keyloggers"

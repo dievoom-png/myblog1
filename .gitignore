@@ -1,0 +1,11 @@
+# Hugo build output
+public/
+resources/
+.hugo_build.lock
+
+# Editor / assistant / dev files — not needed for Netlify or Hugo to build
+CLAUDE.md
+TODO.md
+frontmatter.json
+.frontmatter/
+*.code-workspace

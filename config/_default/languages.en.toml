@@ -1,0 +1,19 @@
+locale = "en"
+label = "English"
+weight = 1
+title = "Blog.Yahya"
+
+[params]
+  displayName = "EN"
+  isoCode = "en"
+  rtl = false
+  dateFormat = "Mon, Jan 2, 2006"
+
+[params.author]
+  name = "Yahya Korayem"
+  image = "img/author.jpg"
+  headline = "👋 My learning and tinkering journey 👾 💻"
+  links = [
+    { github = "https://github.com/dievoom-png" },
+    { linkedin = "https://www.linkedin.com/in/yahya-korayem/" },
+  ]
