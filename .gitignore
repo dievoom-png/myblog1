@@ -6,6 +6,7 @@ resources/
 # Editor / assistant / dev files — not needed for Netlify or Hugo to build
 CLAUDE.md
 TODO.md
+WRITING-POSTS.md
 frontmatter.json
 .frontmatter/
 *.code-workspace

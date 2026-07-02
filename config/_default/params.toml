@@ -54,6 +54,9 @@ smartTOC = true
   showRelatedContent = true
   relatedContentLimit = 3
   seriesOpened = false
+  showComments = false  # flip to true once giscus IDs are set in [giscus] below
+  # showViews = true    # uncomment once [firebase] is configured (else shows a loading spinner)
+  # showLikes = true    # uncomment once [firebase] is configured
 
 [list]
   showHero = false
@@ -78,10 +81,12 @@ smartTOC = true
   cardView = false
 
 # --- Comments (giscus) ---
-# Enabled below; the comments partial only renders once giscus.repo is filled in.
+# Two switches must both be on for comments to appear:
+#   1. article.showComments = true  (above)
+#   2. giscus.repo + IDs filled in  (below) — the partial self-gates on repo
 # Setup: make the repo public → enable Discussions → install the giscus app
 # (https://github.com/apps/giscus) → get IDs from https://giscus.app
-comments = true
+# Disable on a single post with `showComments: false` in its front matter.
 
 [giscus]
   repo = ""            # e.g. "dievoom-png/myblog1"
