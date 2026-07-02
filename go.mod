@@ -2,4 +2,6 @@ module github.com/dievoom-png/myblog1
 
 go 1.20
 
-require github.com/adityatelange/hugo-PaperMod v0.0.0-20231125123631-b288ede80cbd // indirect
+require (
+	github.com/nunocoracao/blowfish/v2 v2.103.0 // indirect
+)
