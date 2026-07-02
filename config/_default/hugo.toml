@@ -25,6 +25,19 @@ ignoreErrors = ["error-remote-getjson"]
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
+[related]
+  threshold = 0
+  toLower = false
+  [[related.indices]]
+    name = "series"
+    weight = 100
+  [[related.indices]]
+    name = "tags"
+    weight = 80
+  [[related.indices]]
+    name = "categories"
+    weight = 60
+
 [module]
   [[module.imports]]
     path = "github.com/nunocoracao/blowfish/v2"

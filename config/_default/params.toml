@@ -1,7 +1,7 @@
 # Blowfish theme parameters
 # Full reference: https://blowfish.page/docs/configuration/
 
-colorScheme = "terminus"
+colorScheme = "deep-purple"
 defaultAppearance = "dark"
 autoSwitchAppearance = true
 
@@ -16,7 +16,7 @@ highlightCurrentMenuArea = true
 smartTOC = true
 
 [header]
-  layout = "fixed"
+  layout = "fixed-fill-blur"
 
 [footer]
   showMenu = true
@@ -39,6 +39,7 @@ smartTOC = true
   showAuthor = true
   showHero = true
   heroStyle = "background"
+  layoutBackgroundBlur = true
   showBreadcrumbs = true
   showDraftLabel = true
   showEdit = false
@@ -50,6 +51,9 @@ smartTOC = true
   showWordCount = false
   showZenMode = true
   sharingLinks = ["linkedin", "twitter", "reddit", "email"]
+  showRelatedContent = true
+  relatedContentLimit = 3
+  seriesOpened = false
 
 [list]
   showHero = false
