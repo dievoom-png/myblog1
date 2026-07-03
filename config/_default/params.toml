@@ -61,8 +61,6 @@ smartTOC = true
   relatedContentLimit = 3
   seriesOpened = false
   showComments = true  # giscus configured below
-  showViews = true    # Firebase configured below
-  showLikes = true    # Firebase configured below
 
 [list]
   showHero = false
@@ -105,16 +103,3 @@ smartTOC = true
   inputPosition = "bottom"
   theme = "preferred_color_scheme"
   lang = "en"
-
-# --- Likes & views (Firebase) ---
-# To enable: create a Firebase project + Firestore, paste the web-app config
-# below, then set article.showViews / article.showLikes = true above.
-# (Left off for now — enabling without config shows a permanent loading spinner.)
-[firebase]
-  apiKey = "AIzaSyCyZHNYF93Q6dIPByn_3cTtIJJx8AwGeoE"
-  authDomain = "blogproject-10e7b.firebaseapp.com"
-  projectId = "blogproject-10e7b"
-  storageBucket = "blogproject-10e7b.firebasestorage.app"
-  messagingSenderId = "357759030461"
-  appId = "1:357759030461:web:48df6971f93b79874953d4"
-  measurementId = ""
