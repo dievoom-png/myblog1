@@ -11,7 +11,7 @@
       data-reactions-enabled="{{ .reactionsEnabled | default 1 }}"
       data-emit-metadata="{{ .emitMetadata | default 0 }}"
       data-input-position="{{ .inputPosition | default "top" }}"
-      data-theme="{{ if eq site.Params.defaultAppearance "dark" }}dark{{ else }}light{{ end }}"
+      data-theme="{{ .theme | default "preferred_color_scheme" }}"
       data-lang="{{ .lang | default "en" }}"
       crossorigin="anonymous"
       async>

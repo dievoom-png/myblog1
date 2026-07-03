@@ -10,7 +10,7 @@ title = "Blog.Yahya"
   dateFormat = "Mon, Jan 2, 2006"
 
 [params.author]
-  name = "Yahya Korayem"
+  name = "Yahya"
   image = "img/author.jpg"
   headline = "👋 My learning and tinkering journey 👾 💻"
   links = [

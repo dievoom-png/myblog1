@@ -60,9 +60,9 @@ smartTOC = true
   showRelatedContent = true
   relatedContentLimit = 3
   seriesOpened = false
-  showComments = false  # flip to true once giscus IDs are set in [giscus] below
-  # showViews = true    # uncomment once [firebase] is configured (else shows a loading spinner)
-  # showLikes = true    # uncomment once [firebase] is configured
+  showComments = true  # giscus configured below
+  showViews = true    # Firebase configured below
+  showLikes = true    # Firebase configured below
 
 [list]
   showHero = false
@@ -95,14 +95,15 @@ smartTOC = true
 # Disable on a single post with `showComments: false` in its front matter.
 
 [giscus]
-  repo = ""            # e.g. "dievoom-png/myblog1"
-  repoId = ""          # from giscus.app
-  category = "General" # a Discussions category, e.g. "Announcements"
-  categoryId = ""      # from giscus.app
+  repo = "dievoom-png/myblog1"
+  repoId = "R_kgDOJncI_A"
+  category = "Announcements"
+  categoryId = "DIC_kwDOJncI_M4DAajk"
   mapping = "pathname"
   reactionsEnabled = 1
   emitMetadata = 0
-  inputPosition = "top"
+  inputPosition = "bottom"
+  theme = "preferred_color_scheme"
   lang = "en"
 
 # --- Likes & views (Firebase) ---
@@ -110,10 +111,10 @@ smartTOC = true
 # below, then set article.showViews / article.showLikes = true above.
 # (Left off for now — enabling without config shows a permanent loading spinner.)
 [firebase]
-  apiKey = ""
-  authDomain = ""
-  projectId = ""
-  storageBucket = ""
-  messagingSenderId = ""
-  appId = ""
+  apiKey = "AIzaSyCyZHNYF93Q6dIPByn_3cTtIJJx8AwGeoE"
+  authDomain = "blogproject-10e7b.firebaseapp.com"
+  projectId = "blogproject-10e7b"
+  storageBucket = "blogproject-10e7b.firebasestorage.app"
+  messagingSenderId = "357759030461"
+  appId = "1:357759030461:web:48df6971f93b79874953d4"
   measurementId = ""
