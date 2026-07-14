@@ -6,7 +6,7 @@ draft: false
 # Preview text shown on the home/list pages + used for SEO and social cards.
 # Leave blank to auto-use the first ~30 words. `description` feeds meta/OG tags.
 summary: ""
-description: "A pivoting assessment where reaching the final Domain Controller means chaining credentials across a series of dual-homed hosts, "
+description: "A pivoting assessment where reaching the final Domain Controller means chaining credentials across a series of hosts."
 
 # Taxonomies — keep consistent with existing posts.
 # Convention: Title Case, no leading spaces, acronyms UPPERCASE (CTF, PE, DLL, DNS, API).
@@ -55,17 +55,17 @@ python3 -m http.server #Port 8000 by default
 Browsing over we can simply click around and download our 2 files
 
 ![file1.png](file1.png)
-While this is not clear what is the ip of `server01` or whether it really exists with that name we can confirm that we will be jumping and pivoting around to get to our target. Most importantly now we got credentials `mlefay:Plain Human work!` , but we haven't seen any directory for `mlefay` on this machine so its a hint that its no on this machine.
-Turning our attention to our next file which is the `id_rsa` and honestly it is not clear which user is this for exactly so its just trial and error now, but for us to try we need to prepare the file like so:
+While this is not clear what is the ip of `server01` or whether it really exists with that name we can confirm that we will be jumping and pivoting around to get to our target. Most importantly now we got credentials `mlefay:Plain Human work!` , but we haven't seen any directory for `mlefay` on this machine so it's a hint that it's not on this machine.
+Turning our attention to our next file which is the `id_rsa` and honestly it is not clear which user is this for exactly so it's just trial and error now, but for us to try we need to prepare the file like so:
 
 ```bash                 
 cp id_rsa ~/.ssh/id_rsa 
 sudo chmod 400 ~/.ssh/id_rsa 
 ```
 
-The first command is putting `id_rsa` in our .ssh folder which the ssh client reads to check if we have any ssh it can use when we don't provide a password (which we wont because we don't know the password)
+The first command is putting `id_rsa` in our .ssh folder which the ssh client reads to check if we have any ssh key it can use when we don't provide a password (which we wont because we don't know the password)
 
-second command just sets the permissions because when we downloaded it from the python web-server w did not download the permissions with it
+Second command just sets the permissions because when we downloaded it from the python web-server its original permissions were not downloaded with it.
 400 means: Owner can read the file + No one else has access
 
 ![adminSSH.png](adminSSH.png)
@@ -76,8 +76,8 @@ not for administrator :(
 but for `webadmin` :)
 
 
-First thing that comes to mind is try to read the bash history as i tried reading it with the web shell user `www-data` but it restricted the `webadmin` user.
-The bash history it could give us any hint to what the user have been working on and if there is anything related to our next hop and it's ip address.
+First thing that comes to mind is to try to read the bash history since now we have the required permissions to read it.
+The bash history could give us any hint to what the user has been working on and if there is anything related to our next hop and its ip address.
 
 ```bash
 webadmin@inlanefreight:~$ cat .bash_history 
@@ -104,20 +104,22 @@ for i in {1..254} ;do (ping -c 1 172.16.5.$i | grep "bytes from" &) ;done
 Taking a closer  look on the commands we see a ping sweep on a 172.16.5.0/24 network.
 
 ![PivotHostInterfaces.png](PivotHostInterfaces.png)
-Digging on the interfaces we can see another interface with `ens192` with ip `172.16.5.15` now we know our next jump is will be on that subnet and this is the pivot host all along. We will use this machine as our foothold into the other subnet because it has can reach both networks the one we have we are connected with with our ssh connection and the internal one on `ens192`.
+Digging into the interfaces we can see another interface with `ens192` with ip `172.16.5.15` now we know that our next jump would be on that subnet and this is the pivot host all along. We will use this machine as our foothold into the other subnet because it can reach both networks:
+- The one we are connected via SSH.
+- The internal one on `ens192`.
 
 ```bash
 webadmin@inlanefreight:~$ for i in {1..254} ;do (ping -c 1 172.16.5.$i | grep "bytes from" &) ;done
 64 bytes from 172.16.5.15: icmp_seq=1 ttl=64 time=0.150 ms
 64 bytes from 172.16.5.35: icmp_seq=1 ttl=128 time=1.78 ms
 ```
-Let us first re-run the ping command previously ran we can see that of our ip replied and we have 172.16.5.35 which is a windows host from the`TTL`.
+Let us first re-run the ping command previously ran we can see that our own ip replied and we have 172.16.5.35 which is a windows host from the`TTL`.
 
-> i did notice that the script searches as if its a /24 subnet instead of /16 meaning that 172.16.x.x where x can range anywhere from 0 to 255 but i guess this was intentional as there is no hosts that can be found other than what this scripts finds.
+> I noticed that the script does not cover the entire /16 subnet, it just iterates for the 4th octet (172.16.5.$i) instead of the 3rd and 4th (172.16.$x.$i), but i guess this was intentional as there are no hosts that can be found other than what this scripts finds.
 
-Now its time to do some pivoting, since we have our ssh creds we can establish a dynamic tunnel so we can RDP though our pivot host (10.129.99.68) through the other interface it has  `172.16.5.15` into the windows machine `172.16.5.35`.
+Now it's time to do some pivoting, since we have our ssh creds we can establish a dynamic tunnel so we can RDP though our pivot host (10.129.99.68) through the other interface it has  `172.16.5.15` into the windows machine `172.16.5.35`.
 
-We need a tunnel as we cannot download an RDP client on this machine and we could need our tools on kali later on. The tunnel allows us to forward our tools traffic though that tunnel to the other side (in this case its 172.16.5.35).
+We need a tunnel as we cannot download an RDP client on this machine and we might need our tools on kali later on. The tunnel allows us to forward our tools traffic though that tunnel to the other side (in this case it's 172.16.5.35).
 
 Lets log out of our ssh session and start a new one with `-D` flag
 ```bash
@@ -137,7 +139,7 @@ proxychains xfreerdp /v:172.16.5.35 /u:mlefay /p:'Plain Human work!'
 
 ![RDP2win1.png](RDP2win1.png)
 
-Now it took me a while and some research, some trial and error to figure out what we do next but i figured out how can we get more creds i found we can dump the `LSASS` from memory.
+It took some research and trial and error to figure out what to do next, but I found a way to get more creds: LSASS
 ![LSASS.png](LSASS.png)
 After fighting with `lsassy` for a bit i decided this was unnecessary in this case because i noticed i can just dump it using `comsvcs.dll` and loading it with `rundll32.exe` because `mlefay` can run powershell as admin
 
@@ -176,7 +178,7 @@ DC Flag
 
 Two ideas are worth taking away beyond this lab:
 
-1. A pivot host is just a machine that can see a network you can't. Every jump here worked because some host had an interface on both the segment we could reached and the one we wanted to reach
+1. A pivot host is just a machine that can see a network you can't. Every jump here worked because some host had an interface on both the segment we could reach and the one we wanted to reach
 
 2. No single set of creds opened everything; each host we compromised gave us the creds for the next one. 
 
