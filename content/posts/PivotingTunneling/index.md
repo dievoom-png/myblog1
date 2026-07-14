@@ -6,7 +6,7 @@ draft: false
 # Preview text shown on the home/list pages + used for SEO and social cards.
 # Leave blank to auto-use the first ~30 words. `description` feeds meta/OG tags.
 summary: ""
-description: "A pivoting assessment where reaching the final Domain Controller means chaining credentials across a series of hosts."
+description: ""
 
 # Taxonomies — keep consistent with existing posts.
 # Convention: Title Case, no leading spaces, acronyms UPPERCASE (CTF, PE, DLL, DNS, API).
