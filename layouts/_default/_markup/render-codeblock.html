@@ -1,0 +1,16 @@
+{{/*
+  Project override of Blowfish's render-codeblock hook.
+  Adds a header bar showing the language (and an optional title from
+  ```lang {title="..."}), while keeping the .highlight-wrapper structure that
+  Blowfish's copy-to-clipboard button hooks onto. Line highlighting still works
+  via fence attributes, e.g. ```c {hl_lines=[3,"5-7"]}.
+*/}}
+{{- $title := or .Attributes.title "" -}}
+{{- $lang := .Type -}}
+<div class="highlight-wrapper">
+  <div class="codeblock-header">
+    {{- with $lang }}<span class="codeblock-lang">{{ . }}</span>{{ end -}}
+    {{- with $title }}<span class="codeblock-title">{{ . }}</span>{{ end -}}
+  </div>
+  {{- transform.Highlight .Inner (or $lang "text") .Options -}}
+</div>
