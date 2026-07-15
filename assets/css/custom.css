@@ -26,6 +26,16 @@
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
 }
 
+/* Screenshots should fill the reading column instead of sitting small, especially
+   on phones. Scoped to article figures so the hero and avatar are untouched. */
+.prose figure {
+  margin-inline: 0;
+}
+.prose figure img:not(.nozoom) {
+  width: 100%;
+  height: auto;
+}
+
 /* Give catppuccin-mocha code blocks rounded corners consistent with the theme */
 .prose .chroma {
   border-radius: 0.5rem;

@@ -1,0 +1,112 @@
+{{/*
+  Project override of Blowfish's render-image hook.
+  Reasons it differs from the theme default:
+    1. sizes: the theme used "(min-width: 768px) 50vw, 65vw", which tells phones the
+       image is only 65% of the viewport, so the browser picks a small variant that
+       then looks small and soft. Content screenshots should fill the reading column,
+       so mobile now requests 100vw.
+    2. srcset: the theme only produced 800w and 1280w. Zooming (data-zoom-src) or a
+       retina phone then ran out of pixels. We now produce a ladder up to the source
+       width so high DPR displays and the click to zoom stay crisp.
+    3. Format is left untouched (screenshots stay PNG) so text does not get lossy
+       artifacts, and data-zoom-src still points at the full resolution original.
+  Everything else (SVG, remote, non optimized, caption) matches the theme.
+*/}}
+
+{{- define "RenderImageSimple" -}}
+  {{- $imgObj := .imgObj -}}
+  {{- $src := .src -}}
+  {{- $alt := .alt -}}
+  <img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt="{{ $alt }}"
+    src="{{ $src }}"
+    {{ with $imgObj -}}
+      {{ with $imgObj.Width }}width="{{ . }}"{{ end }}
+      {{ with $imgObj.Height }}height="{{ . }}"{{ end }}
+    {{- end }}>
+{{- end -}}
+
+{{- define "RenderImageResponsive" -}}
+  {{- $imgObj := .imgObj -}}
+  {{- $alt := .alt -}}
+  {{- $ow := $imgObj.Width -}}
+
+  {{/* Build a srcset ladder, only including widths smaller than the source so we
+       never upscale, then always append the original at its natural width. */}}
+  {{- $parts := slice -}}
+  {{- range $w := (slice 480 800 1280 1600 2000) -}}
+    {{- if lt $w $ow -}}
+      {{- $r := $imgObj.Resize (printf "%dx" $w) -}}
+      {{- $parts = $parts | append (printf "%s %dw" $r.RelPermalink $w) -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $parts = $parts | append (printf "%s %dw" $imgObj.RelPermalink $ow) -}}
+  {{- $srcset := delimit $parts ", " -}}
+
+  {{/* Fallback src for browsers without srcset: a mid size copy, or the original. */}}
+  {{- $src := $imgObj.RelPermalink -}}
+  {{- if gt $ow 1280 -}}{{- $src = ($imgObj.Resize "1280x").RelPermalink -}}{{- end -}}
+
+  <img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt="{{ $alt }}"
+    {{ with $imgObj.Width }}width="{{ . }}"{{ end }}
+    {{ with $imgObj.Height }}height="{{ . }}"{{ end }}
+    src="{{ $src }}"
+    srcset="{{ $srcset }}"
+    sizes="(min-width: 768px) 720px, 100vw"
+    data-zoom-src="{{ $imgObj.RelPermalink }}">
+{{- end -}}
+
+{{- define "RenderImageCaption" -}}
+  {{- with .caption -}}
+    <figcaption>{{ . | markdownify }}</figcaption>
+  {{- end -}}
+{{- end -}}
+
+{{- $disableImageOptimizationMD := .Page.Site.Params.disableImageOptimizationMD | default false -}}
+{{- $urlStr := .Destination | safeURL -}}
+{{- $url := urls.Parse $urlStr -}}
+{{- $altText := .Text -}}
+{{- $caption := .Title -}}
+{{- $isRemote := findRE "^(https?|data)" $url.Scheme -}}
+{{- $resource := "" -}}
+
+{{- if not $isRemote -}}
+  {{- $resource = or ($.Page.Resources.GetMatch $urlStr) (resources.Get $urlStr) -}}
+{{- end -}}
+
+
+<figure
+  {{- range $k, $v := .Attributes -}}
+    {{- if $v -}}
+      {{- printf " %s=%q" $k ($v | transform.HTMLEscape) | safeHTMLAttr -}}
+    {{- end -}}
+  {{- end -}}>
+  {{- if $isRemote -}}
+    {{- template "RenderImageSimple" (dict "imgObj" "" "src" $urlStr "alt" $altText) -}}
+  {{- else if $resource -}}
+    {{- $isSVG := eq $resource.MediaType.SubType "svg" -}}
+    {{- $shouldOptimize := and (not $disableImageOptimizationMD) (not $isSVG) -}}
+    {{- if $shouldOptimize -}}
+      {{- template "RenderImageResponsive" (dict "imgObj" $resource "alt" $altText) -}}
+    {{- else -}}
+      {{- if $isSVG -}}
+        {{- template "RenderImageSimple" (dict "imgObj" "" "src" $resource.RelPermalink "alt" $altText) -}}
+      {{- else -}}
+        {{- template "RenderImageSimple" (dict "imgObj" $resource "src" $resource.RelPermalink "alt" $altText) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- else -}}
+    {{- template "RenderImageSimple" (dict "imgObj" "" "src" $urlStr "alt" $altText) -}}
+  {{- end -}}
+
+  {{- template "RenderImageCaption" (dict "caption" $caption) -}}
+</figure>
