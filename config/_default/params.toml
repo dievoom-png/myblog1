@@ -1,7 +1,7 @@
 # Blowfish theme parameters
 # Full reference: https://blowfish.page/docs/configuration/
 
-colorScheme = "crimson"
+colorScheme = "deep-purple"
 defaultAppearance = "dark"
 autoSwitchAppearance = true
 
