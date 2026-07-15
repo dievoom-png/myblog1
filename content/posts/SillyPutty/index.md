@@ -32,16 +32,16 @@ By just looking at the executable it's called putty.exe with the putty icon so i
 
 ## Static Analysis
 
-## Q1 -What is the SHA256 Hash?
+## Q1: What is the SHA256 Hash?
 Using hashmyfiles we can right click the malware sample and select hashmyfiles
 ![SHA256Hash.png](SHA256Hash.png)
 
 0c82e654c09c8fd9fdf4899718efa37670974c9eec5a8fc18a167f93cea6ee83
-## Q2 -What architecture is this binary?
+## Q2: What architecture is this binary?
 When analyzing the File Header-COFF Header-Image File Header using PEbear or PEstudio it will tell us that the Binary Architecture is 32 bit
 ![BinaryArchtecture.png](BinaryArchtecture.png)
 Note that we can also check the Magic in the Optional header that will tell us the architecture of the binary. 0x10b for 32 bits and 0x20b for 64 bit binaries.
-## Q3 - Are there any results from submitting the SHA256 hash to VirusTotal?
+## Q3: Are there any results from submitting the SHA256 hash to VirusTotal?
 The results of running the SHA256 hash confirms that the binary is indeed malicious.
 
 ![VirusTotalSHA256Scan.png](VirusTotalSHA256Scan.png)
@@ -49,24 +49,24 @@ The results of running the SHA256 hash confirms that the binary is indeed malici
 It would be helpful to check out IOCs using VirusTotal but for the sake of not spoiling the fun we'll first solve the challenge and verify our IOCs.
 
 
-## Q4 - Describe the results of pulling the strings from this binary. Record and describe any strings that are potentially interesting. Can any interesting information be extracted from the strings?
+## Q4: Describe the results of pulling the strings from this binary. Record and describe any strings that are potentially interesting. Can any interesting information be extracted from the strings?
 I am assuming the binary is based on a legitimate putty application and the threat actor modified it to have a malicious use.
 Putty is an open source SSH client so by nature it will open sockets and require network traffic running in and out and also has a lot of strings included in it, anything seen suspicious now can be truly legitimate at the end so we need to do deeper analysis to figure out which part of the application misbehaves or how the threat actor embedded the malicious activities. 
 
 But i did find some odd command between the strings
 ![StringsCommand.png](StringsCommand.png)
 
-## Q5 - Describe the results of inspecting the IAT for this binary. Are there any imports worth noting?
+## Q5: Describe the results of inspecting the IAT for this binary. Are there any imports worth noting?
 There is a lot of import used in the binary as this is at the end a legitimate that works just with an extra sprinkle of malicious functions yet a couple of windows API calls caught my eye
 1. `GetKeyboardState` from user32.dll that could be used in Key Loggers so we can test that when we start the dynamic analysis (that was a dead end rabbit hole lol)
 
-## Q6 - Is it likely that this binary is packed?
+## Q6: Is it likely that this binary is packed?
 When checking the .text we can see that there's no big difference between raw size and virtual size, meaning the file is not getting unpacked at runtime.
 ![AnalyzingThe.text.png](AnalyzingThe.text.png)
 
 ## Dynamic Analysis
 
-## Q7 -> Q13  - Describe initial detonation. Are there any notable occurrences at first detonation? Without internet simulation? With internet simulation?
+## Q7 to Q13: Describe initial detonation. Are there any notable occurrences at first detonation? Without internet simulation? With internet simulation?
 I ended up doing solving the rest of the challenge in this question as i got carried away lol.
 ### Detonation without internet
 Running the malware as administrator we will find a Powershell window flashing for a second then disappearing. if you don't run as admin that won't happen it will run the putty without the powershell window.
