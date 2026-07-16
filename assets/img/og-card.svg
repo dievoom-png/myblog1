@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c0818"/>
+      <stop offset="1" stop-color="#050308"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.16" cy="0.12" r="0.7">
+      <stop offset="0" stop-color="#9a5cff" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#9a5cff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.95" cy="1.05" r="0.6">
+      <stop offset="0" stop-color="#e879f9" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#e879f9" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+  <rect x="22" y="22" width="1156" height="586" rx="20" fill="none" stroke="#b289ff" stroke-opacity="0.13" stroke-width="2"/>
+  <text x="92" y="158" font-family="Adwaita Mono, monospace" font-size="30" fill="#b289ff">$ cat ~/notes.md</text>
+  <text x="88" y="326" font-family="Adwaita Sans, sans-serif" font-weight="bold" font-size="112" fill="#f7f5fa">Blog.Yahya</text>
+  <rect x="92" y="364" width="118" height="7" rx="3" fill="#e879f9"/>
+  <text x="90" y="456" font-family="Adwaita Sans, sans-serif" font-weight="bold" font-size="40" fill="#cbc2e4">Malware analysis <tspan fill="#b289ff">&#183;</tspan> reversing <tspan fill="#b289ff">&#183;</tspan> offensive security</text>
+  <text x="92" y="556" font-family="Adwaita Mono, monospace" font-size="28" fill="#736787">blog.yahyaayman.com</text>
+  <rect x="418" y="535" width="15" height="27" rx="1" fill="#e879f9" fill-opacity="0.9"/>
+</svg>

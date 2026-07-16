@@ -36,9 +36,54 @@
   height: auto;
 }
 
-/* Give catppuccin-mocha code blocks rounded corners consistent with the theme */
-.prose .chroma {
+/* ── Code blocks: header bar with the language label; Blowfish still adds its
+   copy button at the top-right of .highlight-wrapper ── */
+.prose .highlight-wrapper {
+  position: relative;
+  margin: 1.25rem 0;
   border-radius: 0.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(var(--color-neutral-700), 0.6);
+}
+.prose .codeblock-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 1.9rem;
+  padding: 0.35rem 3rem 0.35rem 0.9rem; /* right padding leaves room for copy button */
+  font-family: var(--default-mono-font-family);
+  font-size: 0.72rem;
+  background: rgb(var(--color-neutral-800));
+  border-bottom: 1px solid rgba(var(--color-neutral-700), 0.6);
+}
+.prose .codeblock-lang {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgb(var(--color-primary-400));
+}
+.prose .codeblock-title {
+  color: rgb(var(--color-neutral-400));
+}
+/* the Chroma output fills the wrapper; the wrapper owns the rounded corners */
+.prose .highlight-wrapper .chroma,
+.prose .highlight-wrapper .highlight,
+.prose .highlight-wrapper pre {
+  border-radius: 0;
+  margin: 0;
+}
+
+/* ── Reading progress bar (top of article pages; wired in extend-footer.html) ── */
+#bf-reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: rgb(var(--color-primary-500));
+  z-index: 110; /* above Blowfish's fixed-fill-blur header (z-100) so it isn't painted over */
+  pointer-events: none;
 }
 
 /* Mobile: auto-hide the fixed top header when scrolling down, reveal on scroll up.
