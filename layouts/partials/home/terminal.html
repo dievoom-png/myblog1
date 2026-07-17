@@ -1,0 +1,35 @@
+{{/* Blog homepage hero: a bare terminal prompt on the page background (no window
+     chrome). `$ cat ~/notes.md` heads the recent posts (they read as its output),
+     and `$ cd ~` is a terminal-styled link back to the portfolio — home is the
+     apex site (yahyaayman.com); the blog lives one level down, so "go home" is
+     literally `cd ~`. Shares the CRT's DNA: JetBrains Mono, violet phosphor,
+     fuchsia `$`, blinking caret. No JS. */}}
+<style>
+  .blogterm { font-family: var(--default-mono-font-family); font-size: 0.95rem; line-height: 1.85;
+    --ph: var(--color-primary-400); --ph2: var(--color-secondary-400); --mut: var(--color-neutral-400); }
+  .bt-ln { display: block; color: rgb(var(--ph)); white-space: nowrap;
+    text-shadow: 0 0 5px rgba(var(--ph), 0.5), 0 0 14px rgba(var(--ph), 0.22); }
+  .bt-p { color: rgb(var(--ph2)); text-shadow: 0 0 5px rgba(var(--ph2), 0.55), 0 0 14px rgba(var(--ph2), 0.28); }
+  .bt-cur { display: inline-block; width: 0.5rem; height: 1rem; margin-left: 3px; vertical-align: -2px;
+    background: rgb(var(--ph)); box-shadow: 0 0 7px rgba(var(--ph), 0.65);
+    animation: btblink 1.05s steps(1) infinite; }
+  @keyframes btblink { 50% { opacity: 0; } }
+  /* the go-home command is the only link; sits slightly dim, brightens on hover */
+  a.bt-cmd { text-decoration: none; opacity: 0.8; transition: opacity 0.18s ease, text-shadow 0.18s ease; }
+  a.bt-cmd:hover, a.bt-cmd:focus-visible { opacity: 1;
+    text-shadow: 0 0 6px rgba(var(--ph), 0.85), 0 0 16px rgba(var(--ph), 0.4); }
+  a.bt-cmd:focus-visible { outline: 2px solid rgb(var(--ph)); outline-offset: 4px; border-radius: 4px; }
+  /* light mode: drop the glow and deepen the violet/fuchsia so the mono text stays readable */
+  html:not(.dark) .bt-ln { color: rgb(var(--color-primary-600)); text-shadow: none; }
+  html:not(.dark) .bt-p { color: rgb(var(--color-secondary-600)); text-shadow: none; }
+  html:not(.dark) .bt-cur { background: rgb(var(--color-primary-600)); box-shadow: none; }
+  html:not(.dark) a.bt-cmd:hover, html:not(.dark) a.bt-cmd:focus-visible { text-shadow: none; }
+  @media (prefers-reduced-motion: reduce) { .bt-cur { animation: none; } }
+</style>
+
+<div class="blogterm">
+  <span class="bt-ln"><span class="bt-p">$</span> cat ~/notes.md</span>
+  <a class="bt-ln bt-cmd" href="https://yahyaayman.com" aria-label="Go to my portfolio home">
+    <span class="bt-p">$</span> cd ~<span class="bt-cur"></span>
+  </a>
+</div>

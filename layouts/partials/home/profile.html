@@ -1,13 +1,8 @@
-{{/* Minimal blog homepage: a subtle one line intro that points to the portfolio
-     for the full story, then straight into the posts. Overrides Blowfish's big
-     centered avatar + name + headline profile. */}}
-<div class="mb-10 max-w-prose">
-  <p class="text-lg text-neutral-700 dark:text-neutral-300">
-    Malware analysis and offensive security writeups, and notes from whatever I'm currently taking apart.
-  </p>
-  <p class="mt-2 text-sm text-neutral-500 dark:text-neutral-400">
-    <a href="https://yahyaayman.com" class="text-primary-600 dark:text-primary-400 hover:underline hover:underline-offset-2">About me &rarr;</a>
-  </p>
+{{/* Minimal blog homepage: a bare terminal prompt — `$ cat ~/notes.md` heads the
+     recent posts, `$ cd ~` links home to the portfolio — then straight into the
+     posts. Overrides Blowfish's big centered avatar + name + headline profile. */}}
+<div class="mb-10">
+  {{ partial "home/terminal.html" . }}
 </div>
 
 {{ partial "recent-articles/main.html" . }}
