@@ -44,8 +44,12 @@ smartTOC = true
   showDate = true
   showAuthor = true
   showHero = true
-  heroStyle = "background"
-  layoutBackgroundBlur = true
+  # "basic" = feature image as a contained banner at the top of the post; the
+  # article then sits on the solid deep-purple background for readability.
+  # ("background" turned the image into a blurred full-page wash that bled into
+  # the header and hurt readability on saturated images.)
+  heroStyle = "basic"
+  layoutBackgroundBlur = false
   showBreadcrumbs = true
   showDraftLabel = true
   showEdit = false
